@@ -1,0 +1,131 @@
+.navigation {
+    &__tool-tip {
+        height: 7rem;
+        width: 20rem;
+        background-color: $color-white;
+        color: $color-blue;
+        font-size: 2.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        position: fixed;
+        text-align: center;
+        top: 10rem;
+        right: 22rem;
+        z-index: 5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+
+        &:after {
+            content: '';
+            display: inline-block;
+            height: 4rem;
+            width: 4rem;
+            clip-path: polygon(0 0, 100% 50%, 0 100%);
+            background-color: $color-white;
+            position: absolute;
+            right: -3rem;
+        }
+    }
+
+    &__lines {
+        background-color: $color-white;
+        height: 8rem;
+        width: 8rem;
+        position: fixed;
+        top: 8rem;
+        right: 8rem;
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+        box-shadow: $shadow-box-light;
+        z-index: 5;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            box-shadow: $shadow-box;
+            transform: translateY(-0.3rem);
+        }
+
+        &:active {
+            box-shadow: $shadow-box-light;
+            transform: translateY(0);
+        }
+    }
+
+    &:hover &__line--2 {
+        width: 6rem;
+        left: 5rem;
+    }
+
+    &__line {
+        background-color: $color-blue;
+        height: 0.5rem;
+        width: 6rem;
+        @include absoluteCenter;
+        transition: all 0.3s;
+
+        &--1 {
+            top: 3.5rem;
+        }
+
+        &--2 {
+            width: 4rem;
+            left: 6rem;
+            display: inline-block;
+        }
+
+        &--3 {
+            top: 6.5rem;
+        }
+    }
+
+    &__background {
+        position: fixed;
+        background-color: rgba($color-grey-light-1, 0.95);
+        top: 9rem;
+        right: 9rem;
+        height: 0;
+        width: 0;
+        border-radius: 50%;
+        transform: translate(50%, -45%);
+        z-index: 3;
+    }
+
+    &__background ~ &__list &__item {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &__list {
+        display: inline-block;
+        position: fixed;
+        top: 50%;
+        z-index: 4;
+        list-style: none;
+        font-size: 4rem;
+        font-weight: 600;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+    }
+
+    &__item {
+        margin: 4rem 0;
+        transform: translateX(160rem);
+    }
+
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            color: $color-blue;
+        }
+
+        &:active,
+        &:focus {
+            color: $color-grey-dark-4;
+        }
+    }
+}

@@ -9,10 +9,7 @@ body {
     color: $color-grey-light-2;
     text-align: center;
     text-transform: uppercase;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    @include absoluteCenter;
     cursor: pointer;
 
     &--main {

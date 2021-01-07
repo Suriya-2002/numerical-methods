@@ -8,7 +8,8 @@
 @import './base/typography';
 @import './base/utilities';
 
-// @import './components';
+@import './components/button';
+@import './components/navigation';
 
 @import './layout/body';
 @import './layout/header';

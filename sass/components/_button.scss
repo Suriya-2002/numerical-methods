@@ -1,0 +1,28 @@
+.btn-primary {
+    margin: 2rem;
+    padding: 1.5rem 3rem;
+    text-transform: capitalize;
+    border: 0.4rem solid $color-blue;
+    border-radius: 0.6rem;
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: $color-blue;
+    position: relative;
+    bottom: 0;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s;
+
+    &:hover {
+        background-color: $color-blue;
+        color: $color-white !important;
+        box-shadow: $shadow-box;
+        bottom: 0.5rem;
+    }
+
+    &:active {
+        box-shadow: $shadow-box-light;
+        bottom: 0;
+    }
+}
