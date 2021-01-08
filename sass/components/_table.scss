@@ -1,0 +1,51 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 130rem;
+    margin: 0 auto;
+}
+
+.table {
+    background-color: rgba($color-blue, 0.1);
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+    font-size: 3rem;
+    font-family: 'Source Code Pro', monospace;
+    border-radius: 0.8rem 0.8rem 0 0;
+    box-shadow: $shadow-box;
+    display: none;
+    overflow: scroll;
+
+    &__head {
+        color: $color-grey-light-1;
+    }
+
+    &__row {
+        &:last-child {
+            border-bottom: 0.8rem solid $color-blue;
+        }
+    }
+
+    &__body &__row {
+        &:nth-of-type(odd) {
+            background-color: $color-grey-light-1;
+        }
+    }
+
+    &__head &__row {
+        font-size: 4rem;
+        font-weight: 600;
+        background-color: $color-blue;
+    }
+
+    &__cell {
+        padding: 1.5rem 0.5rem;
+    }
+
+    &__head &__row &__cell {
+        padding: 2.5rem 0;
+    }
+}

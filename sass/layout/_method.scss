@@ -1,0 +1,14 @@
+.section-methods {
+    background-color: rgba($color-grey-light-1, 1);
+    padding: 0 3rem 0rem 3rem;
+}
+
+.method {
+    display: none;
+    width: 130rem;
+    margin: 0 auto;
+
+    &--active {
+        display: block;
+    }
+}

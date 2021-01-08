@@ -31,33 +31,55 @@
 
             <ul class="navigation__list">
                 <li class="navigation__item">
-                    <a href="#bisection-method" class="navigation__link btn-primary">Bisection</a>
+                    <a href="#bisection-method" class="navigation__link btn-primary" data-method="bisection"
+                        >Bisection</a
+                    >
                 </li>
 
                 <li class="navigation__item">
-                    <a href="#newton-raphson-method" class="navigation__link btn-primary">Newton-raphson</a>
+                    <a
+                        href="#newton-raphson-method"
+                        class="navigation__link btn-primary"
+                        data-method="newton-raphson"
+                        >Newton-raphson</a
+                    >
                 </li>
 
                 <li class="navigation__item">
-                    <a href="#secant-method" class="navigation__link btn-primary">Secant</a>
+                    <a href="#secant-method" class="navigation__link btn-primary" data-method="secant"
+                        >Secant</a
+                    >
                 </li>
 
                 <li class="navigation__item">
-                    <a href="#regula-falsi-method" class="navigation__link btn-primary">Regula-falsi</a>
+                    <a
+                        href="#regula-falsi-method"
+                        class="navigation__link btn-primary"
+                        data-method="regula-falsi"
+                        >Regula-falsi</a
+                    >
                 </li>
 
                 <li class="navigation__item">
-                    <a href="#fixed-point-method" class="navigation__link btn-primary"
+                    <a
+                        href="#fixed-point-method"
+                        class="navigation__link btn-primary"
+                        data-method="fixed-point"
                         >Fixed point iteration</a
                     >
                 </li>
 
                 <li class="navigation__item">
-                    <a href="#interpolation-method" class="navigation__link btn-primary">Interpolation</a>
+                    <a href="#interpolation" class="navigation__link btn-primary" data-method="interpolation"
+                        >Interpolation</a
+                    >
                 </li>
 
                 <li class="navigation__item">
-                    <a href="#divided-difference-method" class="navigation__link btn-primary"
+                    <a
+                        href="#divided-difference"
+                        class="navigation__link btn-primary"
+                        data-method="divided-difference"
                         >Divided difference</a
                     >
                 </li>
@@ -113,19 +135,110 @@
             </ul>
 
             <div class="information__buttons">
-                <a href="#bisection-method" class="btn-primary method__link">Bisection</a>
-                <a href="#newton-raphson-method" class="btn-primary method__link">Newton-raphson</a>
-                <a href="#secant-method" class="btn-primary method__link">Secant</a>
+                <a href="#bisection-method" class="btn-primary method__link" data-method="bisection"
+                    >Bisection</a
+                >
+                <a href="#newton-raphson-method" class="btn-primary method__link" data-method="newton-raphson"
+                    >Newton-raphson</a
+                >
+                <a href="#secant-method" class="btn-primary method__link" data-method="secant">Secant</a>
             </div>
             <div class="information__buttons">
-                <a href="#regula-falsi-method" class="btn-primary method__link">Regula-falsi</a>
-                <a href="#fixed-point-method" class="btn-primary method__link">Fixed point iteration</a>
+                <a href="#regula-falsi-method" class="btn-primary method__link" data-method="regula-falsi"
+                    >Regula-falsi</a
+                >
+                <a href="#fixed-point-method" class="btn-primary method__link" data-method="fixed-point"
+                    >Fixed point iteration</a
+                >
             </div>
             <div class="information__buttons">
-                <a href="#interpolation" class="btn-primary method__link">Interpolation</a>
-                <a href="#divided-difference" class="btn-primary method__link">Divided difference</a>
+                <a href="#interpolation" class="btn-primary method__link" data-method="interpolation"
+                    >Interpolation</a
+                >
+                <a
+                    href="#divided-difference"
+                    class="btn-primary method__link"
+                    data-method="divided-difference"
+                    >Divided difference</a
+                >
             </div>
         </section>
+
+        <main class="section-methods">
+            <div class="bisection-method method" id="bisection-method" data-method="bisection">
+                <div class="center-text margin-bottom--huge">
+                    <h1 class="heading-method margin-bottom--medium">Bisection method</h1>
+                </div>
+
+                <div class="information margin-bottom--huge">
+                    <p class="paragraph paragraph--information margin-bottom--huge">
+                        In Mathematics, the bisection method is a straightforward technique to find numerical
+                        solutions of an equation with one unknown. Bisection method is the simplest among all
+                        the numerical schemes to solve the transcendental equations. This scheme is based on
+                        the intermediate value theorem for continuous functions. The Bisection Method is a
+                        successive approximation method that narrows down an interval that contains a root of
+                        the function f(x) It is a simple method, and it is relatively slow. The bisection
+                        method is also known as interval halving method, root-finding method, binary search
+                        method or dichotomy method.
+                    </p>
+
+                    <div class="center-text margin-bottom--huge">
+                        <h1 class="heading-method margin-bottom--medium">Calculator</h1>
+                    </div>
+                </div>
+
+                <form class="form">
+                    <input
+                        class="form__question form__question--bisection-method"
+                        type="text"
+                        placeholder="Equation"
+                        required
+                    />
+                    <small class="form__required form__required--bisection-method">* Required</small>
+
+                    <div class="form__row">
+                        <input
+                            class="form__initial-guess form__initial-guess--bisection-method-1"
+                            type="number"
+                            placeholder="Lower Guess"
+                            required
+                        />
+                        <input
+                            class="form__initial-guess form__initial-guess--bisection-method-2"
+                            type="number"
+                            placeholder="Upper Guess"
+                            required
+                        />
+                    </div>
+                    <div class="form__row">
+                        <input
+                            class="form__precision form__precision--bisection-method"
+                            type="number"
+                            min="1"
+                            max="8"
+                            placeholder="Precision"
+                        />
+                        <input
+                            class="form__variable form__variable--bisection-method"
+                            type="text"
+                            placeholder="Variable"
+                        />
+                    </div>
+                    <button type="submit" class="form__btn form__btn--bisection-method">Calculate</button>
+                </form>
+            </div>
+
+            <div class="table-container">
+                <table class="table">
+                    <thead class="table__head">
+                        <tr class="table__row"></tr>
+                    </thead>
+
+                    <tbody class="table__body"></tbody>
+                </table>
+                <h3 class="result-text">Root : &nbsp; <span class="result-text__value"></span></h3>
+            </div>
+        </main>
 
         <footer class="footer">
             <div class="center-text margin-bottom--medium">
@@ -162,6 +275,11 @@
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
             integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/8.1.1/math.min.js"
+            integrity="sha512-hIy3ZpN+ALjUKJlrj+y7qqEI1LeeOSES2nUTMuJo8gy4yXxEM0e9phMbZN5AiiOKhqJmTan9i+I1U+34r8lPgQ=="
             crossorigin="anonymous"
         ></script>
 
