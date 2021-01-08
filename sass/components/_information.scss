@@ -1,0 +1,21 @@
+.information {
+    background-color: rgba($color-grey-light-1, 1);
+
+    &__list {
+        list-style-type: decimal;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__item {
+        margin-bottom: 4rem;
+    }
+
+    &--intro {
+        padding: 5rem 20rem;
+    }
+}
