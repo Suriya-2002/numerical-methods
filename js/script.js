@@ -270,3 +270,106 @@ document.querySelector('.form__btn--bisection-method').addEventListener('click',
         document.querySelector('.form__question--bisection-method').focus();
     }
 });
+
+document.querySelector('.form__btn--newton-raphson-method').addEventListener('click', event => {
+    event.preventDefault();
+    resetTable();
+
+    let question = document.querySelector('.form__question--newton-raphson-method').value;
+    let initialGuess = parseFloat(
+        document.querySelector('.form__initial-guess--newton-raphson-method').value,
+    );
+    let derivative = document.querySelector('.form__deriative--newton-raphson-method').value;
+
+    let variable = document.querySelector('.form__variable--newton-raphson-method').value;
+    variable = variable ? variable : 'x';
+
+    let precisionValue = parseFloat(document.querySelector('.form__precision--newton-raphson-method').value);
+    precisionValue = precisionValue ? precisionValue : 4;
+
+    if (question && (initialGuess || initialGuess === 0)) {
+        document.querySelector('.form__required--newton-raphson-method-1').style.display = 'none';
+        document.querySelector('.form__required--newton-raphson-method-2').style.display = 'none';
+
+        const regex = new RegExp(variable, 'g');
+
+        derivative = derivative ? derivative : math.derivative(question, variable);
+        derivative = derivative.toString();
+        document.querySelector('.form__deriative--newton-raphson-method').value = derivative;
+
+        try {
+            math.evaluate(question.replace(regex, initialGuess));
+
+            if (math.evaluate(derivative.replace(regex, initialGuess.toString())) === 0)
+                return alert(`Incorrect initial guess`);
+
+            if (precisionValue > 12) return alert('Please set a precision value less than 12');
+            document.querySelector('.form__precision--newton-raphson-method').value = precisionValue;
+
+            document.querySelector('.form__variable--newton-raphson-method').value = variable;
+        } catch (error) {
+            return alert(error);
+        }
+
+        let serialNumbers = [];
+        let initialGuessArray = [];
+        let calculatedGuess;
+        let functionGuess;
+        let functionGuessArray = [];
+        let functionDerivative;
+        let functionDerivativeArray = [];
+
+        initialGuessArray.push(initialGuess.toFixed(precisionValue));
+
+        functionGuess = math.evaluate(question.replace(regex, initialGuess.toString()));
+        functionGuessArray.push(functionGuess.toFixed(precisionValue));
+
+        functionDerivative = math.evaluate(derivative.replace(regex, initialGuess.toString()));
+        functionDerivativeArray.push(functionDerivative.toFixed(precisionValue));
+
+        calculatedGuess = initialGuess - functionGuess / functionDerivative;
+
+        while (initialGuess.toFixed(precisionValue) !== calculatedGuess.toFixed(precisionValue)) {
+            initialGuess = calculatedGuess;
+            initialGuessArray.push(initialGuess.toFixed(precisionValue));
+
+            functionGuess = math.evaluate(question.replace(regex, initialGuess.toString()));
+            functionGuessArray.push(functionGuess.toFixed(precisionValue));
+
+            functionDerivative = math.evaluate(derivative.replace(regex, initialGuess.toString()));
+            functionDerivativeArray.push(functionDerivative.toFixed(precisionValue));
+
+            calculatedGuess = initialGuess - functionGuess / functionDerivative;
+        }
+        for (let i = 0; i < initialGuessArray.length; i++) {
+            serialNumbers.push(i);
+        }
+
+        createTable(
+            ['S.No', 'X', 'F(X)', "F'(X)"],
+            serialNumbers,
+            initialGuessArray,
+            functionGuessArray,
+            functionDerivativeArray,
+        );
+
+        document.querySelector('.result-text').innerHTML = `Root : ${
+            initialGuessArray[initialGuessArray.length - 1]
+        }`;
+    } else {
+        document.querySelector('.form__required--newton-raphson-method-1').style.display = 'none';
+        document.querySelector('.form__required--newton-raphson-method-2').style.display = 'none';
+
+        if (!question) {
+            document.querySelector('.form__required--newton-raphson-method-1').style.display = 'block';
+            document.querySelector('.form__question--newton-raphson-method').focus();
+            return false;
+        }
+
+        if (!document.querySelector('.form__initial-guess--newton-raphson-method').value) {
+            document.querySelector('.form__required--newton-raphson-method-2').style.display = 'block';
+            document.querySelector('.form__initial-guess--newton-raphson-method').focus();
+            return false;
+        }
+    }
+});

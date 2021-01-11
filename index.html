@@ -228,6 +228,73 @@
                 </form>
             </div>
 
+            <div class="newton-raphson-method method" id="newton-raphson-method" data-method="newton-raphson">
+                <div class="center-text margin-bottom--huge">
+                    <h1 class="heading-method margin-bottom--medium">Newton-raphson method</h1>
+                </div>
+
+                <div class="information margin-bottom--huge">
+                    <p class="paragraph paragraph--information margin-bottom--huge">
+                        In numerical analysis, Newton's method, also known as the Newton–Raphson method, named
+                        after Isaac Newton and Joseph Raphson, is a root-finding algorithm which produces
+                        successively better approximations to the roots (or zeroes) of a real-valued function.
+                        <br /><br />
+                        The Newton-Raphson method (also known as Newton's method) is a way to quickly find a
+                        good approximation for the root of a real-valued function f(x)=0. It uses the idea
+                        that a continuous and differentiable function can be approximated by a straight line
+                        tangent to it.
+                    </p>
+
+                    <div class="center-text margin-bottom--huge">
+                        <h1 class="heading-method margin-bottom--medium">Calculator</h1>
+                    </div>
+                </div>
+
+                <form class="form">
+                    <input
+                        class="form__question form__question--newton-raphson-method"
+                        type="text"
+                        placeholder="Equation"
+                        required
+                    />
+                    <small class="form__required form__required--newton-raphson-method-1">* Required</small>
+
+                    <div class="form__row">
+                        <input
+                            class="form__initial-guess form__initial-guess--newton-raphson-method"
+                            type="number"
+                            placeholder="Initial Guess"
+                            required
+                        />
+
+                        <input
+                            class="form__deriative form__deriative--newton-raphson-method"
+                            type="text"
+                            placeholder="Derivative"
+                        />
+                    </div>
+                    <small class="form__required form__required--newton-raphson-method-2">* Required</small>
+
+                    <div class="form__row">
+                        <input
+                            class="form__precision form__precision--newton-raphson-method"
+                            type="number"
+                            min="1"
+                            max="8"
+                            placeholder="Precision"
+                        />
+                        <input
+                            class="form__variable form__variable--newton-raphson-method"
+                            type="text"
+                            placeholder="Variable"
+                        />
+                    </div>
+                    <button type="submit" class="form__btn form__btn--newton-raphson-method">
+                        Calculate
+                    </button>
+                </form>
+            </div>
+
             <div class="table-container">
                 <table class="table">
                     <thead class="table__head">

@@ -161,7 +161,7 @@ body {
     width: 100%;
     margin: 0 auto;
     position: relative; }
-  .form__initial-guess, .form__precision, .form__variable {
+  .form__initial-guess, .form__deriative, .form__precision, .form__variable {
     width: 46%;
     height: 8rem;
     margin-bottom: 5rem;
@@ -175,7 +175,7 @@ body {
     position: relative;
     z-index: 1;
     transition: all 0.3s; }
-    .form__initial-guess:focus, .form__precision:focus, .form__variable:focus {
+    .form__initial-guess:focus, .form__deriative:focus, .form__precision:focus, .form__variable:focus {
       border: none;
       outline: none;
       border-bottom: 0.5rem solid #551a8b;
