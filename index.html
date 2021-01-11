@@ -295,6 +295,66 @@
                 </form>
             </div>
 
+            <div class="secant-method method" id="secant-method" data-method="secant">
+                <div class="center-text margin-bottom--huge">
+                    <h1 class="heading-method margin-bottom--medium">Secant method</h1>
+                </div>
+
+                <div class="information margin-bottom--huge">
+                    <p class="paragraph paragraph--information margin-bottom--huge">
+                        The secant method is very similar to the bisection method except instead of dividing
+                        each interval by choosing the midpoint the secant method divides each interval by the
+                        secant line connecting the endpoints. The secant method always converges to a root of
+                        f(x)=0 provided that f(x) is continuous on [a,b] and f(a)f(b) < 0.
+                    </p>
+
+                    <div class="center-text margin-bottom--huge">
+                        <h1 class="heading-method margin-bottom--medium">Calculator</h1>
+                    </div>
+                </div>
+
+                <form class="form">
+                    <input
+                        class="form__question form__question--secant-method"
+                        type="text"
+                        placeholder="Equation"
+                        required
+                    />
+                    <small class="form__required form__required--secant-method">* Required</small>
+
+                    <div class="form__row">
+                        <input
+                            class="form__initial-guess form__initial-guess--secant-method-1"
+                            type="number"
+                            placeholder="Lower Guess"
+                            required
+                        />
+
+                        <input
+                            class="form__initial-guess form__initial-guess--secant-method-2"
+                            type="number"
+                            placeholder="Upper Guess"
+                            required
+                        />
+                    </div>
+                    <div class="form__row">
+                        <input
+                            class="form__precision form__precision--secant-method"
+                            type="number"
+                            min="1"
+                            max="8"
+                            placeholder="Precision"
+                        />
+                        <input
+                            class="form__variable form__variable--secant-method"
+                            type="text"
+                            placeholder="Variable"
+                        />
+                    </div>
+                    <button type="submit" class="form__btn form__btn--secant-method">Calculate</button>
+                </form>
+            </div>
+
             <div class="table-container">
                 <table class="table">
                     <thead class="table__head">
