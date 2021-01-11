@@ -355,6 +355,68 @@
                 </form>
             </div>
 
+            <div class="regula-falsi-method method" id="regula-falsi-method" data-method="regula-falsi">
+                <div class="center-text margin-bottom--huge">
+                    <h1 class="heading-method margin-bottom--medium">Regula-falsi method</h1>
+                </div>
+
+                <div class="information margin-bottom--huge">
+                    <p class="paragraph paragraph--information margin-bottom--huge">
+                        Regula Falsi method or the method of false position is a numerical method for solving
+                        an equation in one unknown. It is quite similar to bisection method algorithm and is
+                        one of the oldest approaches. It was developed because the bisection method converges
+                        at a fairly slow speed. In simple terms, the method is the trial and error technique
+                        of using test ("false") values for the variable and then adjusting the test value
+                        according to the outcome.
+                    </p>
+
+                    <div class="center-text margin-bottom--huge">
+                        <h1 class="heading-method margin-bottom--medium">Calculator</h1>
+                    </div>
+                </div>
+
+                <form class="form">
+                    <input
+                        class="form__question form__question--regula-falsi-method"
+                        type="text"
+                        placeholder="Equation"
+                        required
+                    />
+                    <small class="form__required form__required--regula-falsi-method">* Required</small>
+
+                    <div class="form__row">
+                        <input
+                            class="form__initial-guess form__initial-guess--regula-falsi-method-1"
+                            type="number"
+                            placeholder="Lower Guess"
+                            required
+                        />
+
+                        <input
+                            class="form__initial-guess form__initial-guess--regula-falsi-method-2"
+                            type="number"
+                            placeholder="Upper Guess"
+                            required
+                        />
+                    </div>
+                    <div class="form__row">
+                        <input
+                            class="form__precision form__precision--regula-falsi-method"
+                            type="number"
+                            min="1"
+                            max="8"
+                            placeholder="Precision"
+                        />
+                        <input
+                            class="form__variable form__variable--regula-falsi-method"
+                            type="text"
+                            placeholder="Variable"
+                        />
+                    </div>
+                    <button type="submit" class="form__btn form__btn--regula-falsi-method">Calculate</button>
+                </form>
+            </div>
+
             <div class="table-container">
                 <table class="table">
                     <thead class="table__head">

@@ -474,3 +474,105 @@ document.querySelector('.form__btn--secant-method').addEventListener('click', ev
         document.querySelector('.form__question--secant-method').focus();
     }
 });
+
+document.querySelector('.form__btn--regula-falsi-method').addEventListener('click', event => {
+    event.preventDefault();
+    resetTable();
+
+    let question = document.querySelector('.form__question--regula-falsi-method').value;
+    let initialGuess1 = parseFloat(
+        document.querySelector('.form__initial-guess--regula-falsi-method-1').value,
+    );
+    let initialGuess2 = parseFloat(
+        document.querySelector('.form__initial-guess--regula-falsi-method-2').value,
+    );
+
+    let variable = document.querySelector('.form__variable--regula-falsi-method').value;
+    variable = variable ? variable : 'x';
+
+    let precisionValue = parseFloat(document.querySelector('.form__precision--regula-falsi-method').value);
+    precisionValue = precisionValue ? precisionValue : 4;
+
+    if (question) {
+        document.querySelector('.form__required--regula-falsi-method').style.display = 'none';
+
+        const regex = new RegExp(variable, 'g');
+
+        try {
+            math.evaluate(question.replace(regex, initialGuess1));
+            if (
+                math.evaluate(question.replace(regex, initialGuess1.toString())) *
+                    math.evaluate(question.replace(regex, initialGuess2.toString())) >
+                0
+            )
+                return alert('Entered initial guesses do not converge');
+
+            if (precisionValue > 12) return alert('Please set a precision value less than 12');
+            document.querySelector('.form__precision--regula-falsi-method').value = precisionValue;
+
+            if (!initialGuess1 && !initialGuess2) {
+                initialGuess1 = generateInitialGuess(question, regex);
+                initialGuess2 = initialGuess1 + 1;
+
+                document.querySelector('.form__initial-guess--regula-falsi-method-1').value = initialGuess1;
+                document.querySelector('.form__initial-guess--regula-falsi-method-2').value = initialGuess2;
+            }
+
+            if (
+                !document.querySelector('.form__initial-guess--regula-falsi-method-1').value ||
+                !document.querySelector('.form__initial-guess--regula-falsi-method-2').value
+            )
+                return alert('Enter the other initial guess');
+
+            document.querySelector('.form__variable--regula-falsi-method').value = variable;
+        } catch (error) {
+            return alert(error);
+        }
+
+        let serialNumbers = [];
+        let calculatedGuess;
+        let function1;
+        let function2;
+        let function3;
+        let functionArray = [];
+        let calculatedGuessArray = [];
+
+        function1 = math.evaluate(question.replace(regex, initialGuess1.toString()));
+        function2 = math.evaluate(question.replace(regex, initialGuess2.toString()));
+
+        functionArray.push(function1.toFixed(precisionValue));
+        functionArray.push(function2.toFixed(precisionValue));
+
+        calculatedGuessArray.push(initialGuess1.toFixed(precisionValue));
+        calculatedGuessArray.push(initialGuess2.toFixed(precisionValue));
+
+        calculatedGuess = (initialGuess1 * function2 - initialGuess2 * function1) / (function2 - function1);
+
+        function3 = math.evaluate(question.replace(regex, calculatedGuess.toString()));
+
+        while (Math.abs(parseFloat(function3.toFixed(precisionValue))) > Math.pow(10, -1 * precisionValue)) {
+            calculatedGuess =
+                (initialGuess1 * function2 - initialGuess2 * function1) / (function2 - function1);
+            calculatedGuessArray.push(calculatedGuess.toFixed(precisionValue));
+
+            function3 * function1 < 0 ? (initialGuess2 = calculatedGuess) : (initialGuess1 = calculatedGuess);
+
+            function1 = math.evaluate(question.replace(regex, initialGuess1.toString()));
+            function2 = math.evaluate(question.replace(regex, initialGuess2.toString()));
+
+            function3 = math.evaluate(question.replace(regex, calculatedGuess.toString()));
+            functionArray.push(function3.toFixed(precisionValue));
+        }
+
+        for (let i = 0; i < calculatedGuessArray.length; i++) serialNumbers.push(i);
+
+        createTable(['S.No', 'X', 'F(X)'], serialNumbers, calculatedGuessArray, functionArray);
+
+        document.querySelector('.result-text').innerHTML = `Root : ${
+            calculatedGuessArray[calculatedGuessArray.length - 1]
+        }`;
+    } else {
+        document.querySelector('.form__required--regula-falsi-method').style.display = 'block';
+        document.querySelector('.form__question--regula-falsi-method').focus();
+    }
+});
