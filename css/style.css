@@ -128,7 +128,7 @@ body {
 .form {
   text-align: center;
   margin-bottom: 10rem; }
-  .form__question {
+  .form__question, .form__full-width {
     width: 100% !important;
     height: 8rem;
     margin-bottom: 5rem;
@@ -140,7 +140,7 @@ body {
     border-bottom: 0.5rem solid transparent;
     border-radius: 0.6rem;
     transition: all 0.3s; }
-    .form__question:focus {
+    .form__question:focus, .form__full-width:focus {
       border: none;
       outline: none;
       border-bottom: 0.5rem solid #551a8b;

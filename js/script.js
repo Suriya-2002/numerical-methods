@@ -576,3 +576,93 @@ document.querySelector('.form__btn--regula-falsi-method').addEventListener('clic
         document.querySelector('.form__question--regula-falsi-method').focus();
     }
 });
+
+document.querySelector('.form__btn--fixed-point-method').addEventListener('click', event => {
+    event.preventDefault();
+    resetTable();
+
+    let question = document.querySelector('.form__question--fixed-point-method').value;
+    let initialGuess = parseFloat(document.querySelector('.form__initial-guess--fixed-point-method').value);
+
+    let variable = document.querySelector('.form__variable--fixed-point-method').value;
+    variable = variable ? variable : 'x';
+
+    let precisionValue = parseFloat(document.querySelector('.form__precision--fixed-point-method').value);
+    precisionValue = precisionValue ? precisionValue : 4;
+
+    if (question && (initialGuess || initialGuess === 0)) {
+        document.querySelector('.form__required--fixed-point-method-1').style.display = 'none';
+        document.querySelector('.form__required--fixed-point-method-2').style.display = 'none';
+
+        const regex = new RegExp(variable, 'g');
+
+        try {
+            math.evaluate(question.replace(regex, initialGuess));
+
+            if (precisionValue > 12) return alert('Please set a precision value less than 12');
+            document.querySelector('.form__precision--fixed-point-method').value = precisionValue;
+
+            const convergeCondition = Math.abs(
+                math.evaluate(
+                    math.derivative(question, variable).toString().replace(regex, initialGuess.toString()),
+                ),
+            );
+
+            if (convergeCondition > 1 || (!convergeCondition && convergeCondition !== 0)) {
+                return alert('Entered initial guess may not converge');
+            }
+
+            document.querySelector('.form__variable--fixed-point-method').value = variable;
+        } catch (error) {
+            return alert(error);
+        }
+
+        let serialNumbers = [];
+        let calculatedGuess;
+        let functionValue;
+        let functionArray = [];
+        let calculatedGuessArray = [];
+
+        calculatedGuess = initialGuess;
+        calculatedGuessArray.push(calculatedGuess.toFixed(precisionValue));
+
+        functionValue = math.evaluate(question.replace(regex, initialGuess.toString()));
+        functionArray.push(functionValue.toFixed(precisionValue));
+
+        while (
+            Math.abs(
+                parseFloat(functionValue.toFixed(precisionValue)) -
+                    parseFloat(calculatedGuess.toFixed(precisionValue)),
+            ) > Math.pow(10, -1 * precisionValue)
+        ) {
+            calculatedGuess = functionValue;
+            calculatedGuessArray.push(calculatedGuess.toFixed(precisionValue));
+
+            functionValue = math.evaluate(question.replace(regex, calculatedGuess.toString()));
+            functionArray.push(functionValue.toFixed(precisionValue));
+        }
+
+        for (let i = 0; i < calculatedGuessArray.length; i++) serialNumbers.push(i);
+
+        createTable(['S.No', 'X', 'F(X)'], serialNumbers, calculatedGuessArray, functionArray);
+
+        document.querySelector('.result-text').innerHTML = `Root : ${
+            calculatedGuessArray[calculatedGuessArray.length - 1]
+        }`;
+    } else {
+        document.querySelector('.form__required--fixed-point-method-1').style.display = 'none';
+        document.querySelector('.form__required--fixed-point-method-2').style.display = 'none';
+
+        if (!question) {
+            document.querySelector('.form__required--fixed-point-method-1').style.display = 'block';
+            document.querySelector('.form__question--fixed-point-method').focus();
+            return false;
+        }
+
+        if (!document.querySelector('.form__initial-guess--fixed-point-method').value) {
+            document.querySelector('.form__required--fixed-point-method-2').style.display = 'block';
+            document.querySelector('.form__initial-guess--fixed-point-method').focus();
+            return false;
+        }
+    }
+});

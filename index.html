@@ -417,6 +417,62 @@
                 </form>
             </div>
 
+            <div class="fixed-point-method method" id="fixed-point-method" data-method="fixed-point">
+                <div class="center-text margin-bottom--huge">
+                    <h1 class="heading-method margin-bottom--medium">Fixed point iteration method</h1>
+                </div>
+
+                <div class="information margin-bottom--huge">
+                    <p class="paragraph paragraph--information margin-bottom--huge">
+                        Fixed point iteration is method of computing fixed points of iterated functions. More
+                        specifically, given a function f(x) defined on the real numbers with real values and
+                        given a point x0 in the domain of f(x), the fixed point iteration is which gives rise
+                        to the sequence which is hoped to converge to a point x. If f(a) is continuous then
+                        one can prove that the obtained x is a fixed point of f(x), i.e., f(x) = x.
+                    </p>
+
+                    <div class="center-text margin-bottom--huge">
+                        <h1 class="heading-method margin-bottom--medium">Calculator</h1>
+                    </div>
+                </div>
+
+                <form class="form">
+                    <input
+                        class="form__question form__question--fixed-point-method"
+                        type="text"
+                        placeholder="Iterative Function"
+                        required
+                    />
+                    <small class="form__required form__required--fixed-point-method-1">* Required</small>
+
+                    <div class="form__row">
+                        <input
+                            class="form__initial-guess form__initial-guess--fixed-point-method form__full-width"
+                            type="number"
+                            placeholder="Initial Guess"
+                            required
+                        />
+                    </div>
+                    <small class="form__required form__required--fixed-point-method-2">* Required</small>
+
+                    <div class="form__row">
+                        <input
+                            class="form__precision form__precision--fixed-point-method"
+                            type="number"
+                            min="1"
+                            max="8"
+                            placeholder="Precision"
+                        />
+                        <input
+                            class="form__variable form__variable--fixed-point-method"
+                            type="text"
+                            placeholder="Variable"
+                        />
+                    </div>
+                    <button type="submit" class="form__btn form__btn--fixed-point-method">Calculate</button>
+                </form>
+            </div>
+
             <div class="table-container">
                 <table class="table">
                     <thead class="table__head">
