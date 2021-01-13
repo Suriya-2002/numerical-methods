@@ -473,6 +473,132 @@
                 </form>
             </div>
 
+            <div class="interpolation method" id="interpolation-method" data-method="interpolation">
+                <div class="center-text margin-bottom--huge">
+                    <h1 class="heading-method margin-bottom--medium">
+                        <span class="dropdown">
+                            <span class="dropdown__text dropdown__text--title"
+                                >Forward <i class="fas fa-caret-down margin-left--small"></i
+                            ></span>
+                            <input type="button" class="dropdown__btn" />
+
+                            <ul class="dropdown__list dropdown__list--title">
+                                <li class="dropdown__option dropdown__option--title">Forward</li>
+                                <li class="dropdown__option dropdown__option--title">Backward</li>
+                                <li class="dropdown__option dropdown__option--title">Lagrange</li>
+                            </ul>
+                        </span>
+                        Interpolation
+                    </h1>
+                </div>
+
+                <div class="information margin-bottom--huge">
+                    <p class="paragraph paragraph--forward paragraph--information margin-bottom--huge">
+                        Interpolation is a method of finding new data points within the range of a discrete
+                        set of known data points. In other words, interpolation is the technique to estimate
+                        the value of a mathematical function, for any intermediate value of the independent
+                        variable. Newton's forward difference formula is a finite difference identity giving
+                        an interpolated value between tabulated points in terms of the first value and the
+                        powers of the forward difference.
+                    </p>
+                    <p class="paragraph paragraph--backward paragraph--information margin-bottom--huge">
+                        Interpolation is a method of finding new data points within the range of a discrete
+                        set of known data points. In other words, interpolation is the technique to estimate
+                        the value of a mathematical function, for any intermediate value of the independent
+                        variable. For interpolating the value of the function y=f(X) near the end of table of
+                        values, and to extrapolate value of the function a short distance forward from Yn,
+                        Newton backward interpolation is used.
+                    </p>
+                    <p class="paragraph paragraph--lagrange paragraph--information margin-bottom--huge">
+                        Interpolation is a method of finding new data points within the range of a discrete
+                        set of known data points. In other words, interpolation is the technique to estimate
+                        the value of a mathematical function, for any intermediate value of the independent
+                        variable. Lagrange polynomials are used for polynomial interpolation. For a given set
+                        of distinct points xj and numbers yj. Lagrange’s interpolation is also an Nth degree
+                        polynomial approximation to f(x). The Lagrange interpolation formula is a way to find
+                        a polynomial which takes on certain values at arbitrary points. It is very useful
+                        method for entries and attributes unequally spaced.
+                    </p>
+
+                    <div class="center-text margin-bottom--huge">
+                        <h1 class="heading-method margin-bottom--medium">Calculator</h1>
+                    </div>
+                </div>
+
+                <form class="form">
+                    <div class="form__row">
+                        <input
+                            class="form__x-value form__x-value--interpolation"
+                            type="number"
+                            placeholder="X"
+                        />
+                        <input
+                            class="form__y-value form__y-value--interpolation"
+                            type="number"
+                            placeholder="Y"
+                        />
+                    </div>
+
+                    <button class="btn btn--add interpolation__btn--add margin-bottom--huge">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+
+                    <div class="form__row margin-top--medium">
+                        <div class="dropdown dropdown--form margin-bottom--medium">
+                            <span
+                                data-dropdown="find-x"
+                                class="dropdown__text dropdown__text--interpolation dropdown__text--form"
+                                >Find Value of X: <i class="fas fa-caret-down"></i
+                            ></span>
+                            <input type="button" class="dropdown__btn" />
+
+                            <ul class="dropdown__list">
+                                <li class="dropdown__option-block">
+                                    <span
+                                        data-option="find-x"
+                                        class="dropdown__option dropdown__option--interpolation"
+                                        >Find Value of X:</span
+                                    >
+                                </li>
+                                <li class="dropdown__option-block">
+                                    <span
+                                        data-option="equation"
+                                        class="dropdown__option dropdown__option--interpolation"
+                                        >Find Equation:</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
+                        <input
+                            class="form__find-x form__find-x--interpolation"
+                            type="text"
+                            placeholder="Enter X"
+                        />
+                    </div>
+                    <small class="form__required form__required--second-block form__required--interpolation"
+                        >* Required</small
+                    >
+
+                    <div class="form__row">
+                        <input
+                            class="form__precision form__precision--interpolation"
+                            type="number"
+                            min="1"
+                            max="8"
+                            placeholder="Precision"
+                        />
+                        <input
+                            class="form__variable form__variable--interpolation"
+                            type="text"
+                            placeholder="Variable"
+                        />
+                    </div>
+
+                    <button type="submit" class="form__btn form__btn--interpolation">Calculate</button>
+                </form>
+            </div>
+
             <div class="table-container">
                 <table class="table">
                     <thead class="table__head">

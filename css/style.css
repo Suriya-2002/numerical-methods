@@ -125,6 +125,126 @@ body {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
     bottom: 0; }
 
+.btn {
+  font-size: 4rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 0.6rem;
+  transition: all 0.4s; }
+  .btn:hover {
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+    transform: translateY(-0.5rem); }
+  .btn:active {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+    transform: translateY(0); }
+  .btn--delete {
+    color: #e94560;
+    height: 5rem;
+    width: 5rem;
+    position: absolute;
+    opacity: 0.4;
+    top: 0;
+    left: 102%;
+    transform: translate(50%, 30%); }
+    .btn--delete:hover {
+      opacity: 1;
+      box-shadow: none !important;
+      text-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+      transform: translate(50%, 20%) !important; }
+  .btn--add {
+    width: 20%;
+    color: #7ed56f;
+    padding: 1rem 2.5rem;
+    border: 0.4rem solid #7ed56f; }
+    .btn--add:hover {
+      background-color: #7ed56f;
+      color: #fff; }
+
+.dropdown {
+  width: 50%;
+  height: 8rem;
+  position: relative;
+  display: inline-block; }
+  .dropdown--form {
+    width: 46%;
+    background-color: #fff;
+    border-radius: 0.6rem; }
+  .dropdown__btn {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    position: relative; }
+    .dropdown__btn:focus {
+      color: #551a8b; }
+  .dropdown__text--form {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .dropdown__text--title {
+    color: #551a8b;
+    font-size: 6.2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    text-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .dropdown__list {
+    width: 100%;
+    height: 16rem;
+    background-color: #fff;
+    margin-top: 2rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: left;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+    transition: all 0.4s ease-in-out; }
+    .dropdown__list--title {
+      height: 24rem;
+      margin-top: 0; }
+  .dropdown__btn:focus + .dropdown__list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); }
+  .dropdown__option-block {
+    width: 100%; }
+  .dropdown__option {
+    height: 8rem;
+    font-size: 3rem;
+    font-weight: 700;
+    padding-left: 3rem;
+    font-family: 'Source Code Pro', monospace;
+    cursor: pointer;
+    display: flex;
+    align-items: center; }
+    .dropdown__option:hover {
+      background-color: #eee; }
+
 .form {
   text-align: center;
   margin-bottom: 10rem; }
@@ -146,7 +266,7 @@ body {
       border-bottom: 0.5rem solid #551a8b;
       box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
       transform: translateY(-0.3rem); }
-  .form__required {
+  .form__required, .form__error {
     display: none;
     text-align: left;
     color: red;
@@ -161,7 +281,7 @@ body {
     width: 100%;
     margin: 0 auto;
     position: relative; }
-  .form__initial-guess, .form__deriative, .form__precision, .form__variable {
+  .form__initial-guess, .form__deriative, .form__precision, .form__variable, .form__x-value, .form__y-value, .form__find-x {
     width: 46%;
     height: 8rem;
     margin-bottom: 5rem;
@@ -175,12 +295,79 @@ body {
     position: relative;
     z-index: 1;
     transition: all 0.3s; }
-    .form__initial-guess:focus, .form__deriative:focus, .form__precision:focus, .form__variable:focus {
+    .form__initial-guess:focus, .form__deriative:focus, .form__precision:focus, .form__variable:focus, .form__x-value:focus, .form__y-value:focus, .form__find-x:focus {
       border: none;
       outline: none;
       border-bottom: 0.5rem solid #551a8b;
       box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
       transform: translateY(-0.3rem); }
+  .form__input--disabled {
+    pointer-events: none;
+    opacity: 0.3; }
+  .form__dropdown {
+    width: 46%;
+    height: 8rem;
+    background-color: #fff;
+    border-radius: 0.6rem;
+    position: relative; }
+  .form__btn-dropdown {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    position: relative; }
+    .form__btn-dropdown:focus {
+      color: #551a8b; }
+  .form__text-dropdown {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .form__list-dropdown {
+    width: 100%;
+    height: 16rem;
+    background-color: #fff;
+    margin-top: 2rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: left;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 0.6rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+    transition: all 0.4s ease-in-out; }
+  .form__btn-dropdown:focus + .form__list-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); }
+  .form__option-dropdown {
+    height: 100%;
+    font-size: 3rem;
+    font-weight: 700;
+    padding-left: 3rem;
+    font-family: 'Source Code Pro', monospace;
+    cursor: pointer;
+    display: flex;
+    align-items: center; }
+    .form__option-dropdown:hover {
+      background-color: #eee; }
   .form__btn {
     width: 100%;
     height: 8rem;

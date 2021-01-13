@@ -25,7 +25,8 @@
         }
     }
 
-    &__required {
+    &__required,
+    &__error {
         display: none;
         text-align: left;
         color: red;
@@ -47,7 +48,10 @@
     &__initial-guess,
     &__deriative,
     &__precision,
-    &__variable {
+    &__variable,
+    &__x-value,
+    &__y-value,
+    &__find-x {
         width: 46%;
         height: 8rem;
         margin-bottom: 5rem;
@@ -68,6 +72,90 @@
             border-bottom: 0.5rem solid $color-blue;
             box-shadow: $shadow-box-light;
             transform: translateY(-0.3rem);
+        }
+    }
+
+    &__input {
+        &--disabled {
+            pointer-events: none;
+            opacity: 0.3;
+        }
+    }
+
+    &__dropdown {
+        width: 46%;
+        height: 8rem;
+        background-color: $color-white;
+        border-radius: 0.6rem;
+        position: relative;
+    }
+
+    &__btn-dropdown {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        border-radius: 0.6rem;
+        cursor: pointer;
+        position: relative;
+
+        &:focus {
+            color: $color-blue;
+        }
+    }
+
+    &__text-dropdown {
+        font-size: 3rem;
+        font-weight: 700;
+        font-family: 'Source Code Pro', monospace;
+        padding: 0 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        @include absoluteCenter;
+    }
+
+    &__list-dropdown {
+        width: 100%;
+        height: 16rem;
+        background-color: $color-white;
+        margin-top: 2rem;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: left;
+        box-shadow: $shadow-box;
+        border-radius: 0.6rem;
+        overflow: hidden;
+        position: relative;
+        z-index: 2;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+        transition: all 0.4s ease-in-out;
+    }
+
+    &__btn-dropdown:focus + &__list-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__option-dropdown {
+        height: 100%;
+        font-size: 3rem;
+        font-weight: 700;
+        padding-left: 3rem;
+        font-family: 'Source Code Pro', monospace;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            background-color: $color-grey-light-1;
         }
     }
 

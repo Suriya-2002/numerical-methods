@@ -666,3 +666,349 @@ document.querySelector('.form__btn--fixed-point-method').addEventListener('click
         }
     }
 });
+
+document.querySelector('.interpolation__btn--add').addEventListener('click', event => {
+    event.preventDefault();
+
+    const cell = `<div class="form__row"><input class="form__x-value form__x-value--interpolation" type="number" min="1" max="8" placeholder="X" /> <input class="form__y-value form__y-value--interpolation" type="text" placeholder="Y" /> <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a> </div>`;
+
+    document.querySelector('.interpolation__btn--add').insertAdjacentHTML('beforebegin', cell);
+});
+
+const calculateInterpolationInputs = [
+    document.querySelector('.form__find-x--interpolation'),
+    document.querySelector('.form__precision--interpolation'),
+    document.querySelector('.form__variable--interpolation'),
+];
+
+calculateInterpolationInputs.forEach(input => {
+    input.addEventListener('keydown', event => {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.querySelector('.form__btn--interpolation').click();
+        }
+    });
+});
+
+const dropdownOptionTitle = document.querySelectorAll('.dropdown__option--title');
+const dropdownSelectedTitle = document.querySelector('.dropdown__text--title');
+const paragraphInterpolation = [
+    document.querySelector('.paragraph--forward'),
+    document.querySelector('.paragraph--backward'),
+    document.querySelector('.paragraph--lagrange'),
+];
+
+dropdownOptionTitle.forEach(option => {
+    option.addEventListener('click', () => {
+        resetTable();
+        paragraphInterpolation.forEach(para => {
+            para.style.display = 'none';
+        });
+        dropdownSelectedTitle.innerHTML =
+            option.textContent + ' <i class="fas fa-caret-down margin-left--small"></i>';
+
+        if (dropdownSelectedTitle.textContent === 'Forward ')
+            paragraphInterpolation[0].style.display = 'block';
+        else if (dropdownSelectedTitle.textContent === 'Backward ')
+            paragraphInterpolation[1].style.display = 'block';
+        else if (dropdownSelectedTitle.textContent === 'Lagrange ')
+            paragraphInterpolation[2].style.display = 'block';
+    });
+});
+
+const findXValue = () => {
+    document.querySelector('.form__find-x--interpolation').classList.remove('form__input--disabled');
+    document.querySelector('.form__variable--interpolation').classList.add('form__input--disabled');
+};
+
+const findEquation = () => {
+    document.querySelector('.form__find-x--interpolation').classList.add('form__input--disabled');
+    document.querySelector('.form__variable--interpolation').classList.remove('form__input--disabled');
+};
+
+const dropdownOptionsInterpolation = document.querySelectorAll('.dropdown__option--interpolation');
+const dropdownSelectedInterpolation = document.querySelector('.dropdown__text--interpolation');
+
+const dropdownInterpolation = document.querySelector('.dropdown__text--interpolation');
+
+dropdownOptionsInterpolation.forEach(option => {
+    option.addEventListener('click', () => {
+        dropdownInterpolation.setAttribute('data-dropdown', option.getAttribute('data-option'));
+        dropdownSelectedInterpolation.innerHTML = option.innerHTML + '<i class="fas fa-caret-down"></i>';
+        if (option.getAttribute('data-option') === 'find-x') findXValue();
+        else findEquation();
+    });
+});
+
+const tableHead = (size, method, type = 'F') => {
+    const head = ['X', 'Y'];
+    if (method === 'I') {
+        let symbol;
+        if (type === 'F') symbol = 'Δ';
+        else if (type === 'B') symbol = '∇';
+
+        for (let i = 1; i < size; i++) {
+            if (i === 1) head.push(`${symbol}Y`);
+            else head.push(`${symbol}<sup>${i}</sup>Y`);
+        }
+    } else if (method === 'D') for (let i = 1; i < size; i++) head.push(i);
+    return head;
+};
+
+const tableValues = (inputX, inputY, method, precisionValue) => {
+    const size = inputX.length;
+    let output = [];
+    for (let i = 0; i < 2 * size - 1; i++) output[i] = [];
+
+    let counter = 0;
+    for (let i = 0; i < 2 * size - 1; i++) {
+        for (let j = 0; j < size + 1; j++) {
+            output[i][j] = '&nbsp;';
+        }
+    }
+
+    for (let i = 0, k = 0; i < 2 * size - 1, k < size; i = i + 2, k++) {
+        output[i][0] = inputX[k];
+        output[i][1] = inputY[k];
+    }
+
+    if (method === 'I')
+        for (let j = 2; j < size + 1; j++) {
+            for (let i = 1; i < 2 * size - 1; i = i + 2) {
+                if (
+                    i + counter + 1 < 2 * size - 1 &&
+                    (output[i + counter + 1][j - 1] - output[i + counter - 1][j - 1] ||
+                        output[i + counter + 1][j - 1] - output[i + counter - 1][j - 1] === 0)
+                ) {
+                    output[i + counter][j] = parseFloat(
+                        (output[i + counter + 1][j - 1] - output[i + counter - 1][j - 1]).toFixed(
+                            precisionValue,
+                        ),
+                    );
+                }
+            }
+            counter++;
+        }
+    else if (method === 'D')
+        for (let j = 2, k = 1; j < size + 1, k < size; j++, k++) {
+            for (let i = 1, l = 0; i < 2 * size - 1, l < size - k; i = i + 2, l++) {
+                if (
+                    i + counter + 1 < 2 * size - 1 &&
+                    (output[i + counter + 1][j - 1] - output[i + counter - 1][j - 1] ||
+                        output[i + counter + 1][j - 1] - output[i + counter - 1][j - 1] === 0)
+                ) {
+                    output[i + counter][j] = parseFloat(
+                        (
+                            (output[i + counter - 1][j - 1] - output[i + counter + 1][j - 1]) /
+                            (inputX[l] - inputX[k + l])
+                        ).toFixed(precisionValue),
+                    );
+                }
+            }
+            counter++;
+        }
+
+    return output;
+};
+
+document.querySelector('.form__btn--interpolation').addEventListener('click', event => {
+    event.preventDefault();
+    resetTable();
+
+    let type;
+    if (dropdownSelectedTitle.textContent === 'Forward ') {
+        type = 'F';
+    } else if (dropdownSelectedTitle.textContent === 'Backward ') {
+        type = 'B';
+    } else if (dropdownSelectedTitle.textContent === 'Lagrange ') {
+        type = 'L';
+    }
+
+    const questionX = document.querySelectorAll('.form__x-value--interpolation');
+    const questionY = document.querySelectorAll('.form__y-value--interpolation');
+    const findX = parseFloat(document.querySelector('.form__find-x--interpolation').value);
+
+    let variable = document.querySelector('.form__variable--interpolation').value;
+    variable = variable ? variable : 'x';
+
+    let precisionValue = parseFloat(document.querySelector('.form__precision--interpolation').value);
+    precisionValue = precisionValue ? precisionValue : 4;
+
+    const inputX = [];
+    const inputY = [];
+
+    try {
+        if (precisionValue > 12) return alert('Please set a precision value less than 12');
+        document.querySelector('.form__precision--interpolation').value = precisionValue;
+
+        document.querySelector('.form__variable--interpolation').value = variable;
+
+        for (let i = 0; i < questionX.length; i++) {
+            if (questionX[i].value && questionY[i].value) {
+                inputX[i] = parseFloat(questionX[i].value);
+                inputY[i] = parseFloat(questionY[i].value);
+            } else {
+                const error = `<small style="display: block;" class="form__error form__error--interpolation">* Don't leave empty or half filled blanks</small>`;
+
+                if (!questionY[i].value) questionY[i].focus();
+                if (!questionX[i].value) questionX[i].focus();
+
+                if (!document.querySelector('.form__error'))
+                    return document
+                        .querySelector('.interpolation__btn--add')
+                        .insertAdjacentHTML('afterend', error);
+
+                return false;
+            }
+        }
+
+        if (document.querySelector('.form__error')) document.querySelector('.form__error').remove();
+        document.querySelector('.form__required--interpolation').style.display = 'none';
+        if (dropdownInterpolation.getAttribute('data-dropdown') === 'find-x') {
+            if (!findX && findX !== 0) {
+                document.querySelector('.form__find-x--interpolation').focus();
+                return (document.querySelector('.form__required--interpolation').style.display = 'block');
+            }
+        }
+    } catch (error) {
+        return alert(error);
+    }
+
+    const size = inputX.length;
+
+    if (type === 'F' || type === 'B') {
+        const difference = inputX[1] - inputX[0];
+        for (let i = 0; i < size - 1; i++)
+            if (inputX[i + 1] - inputX[i] !== difference) {
+                const error = `<small style="display: block;" class="form__error form__error--interpolation">Entered X values do not have a common difference</small>`;
+                return document
+                    .querySelector('.interpolation__btn--add')
+                    .insertAdjacentHTML('afterend', error);
+            }
+    }
+
+    const interpolationResult = (output, type) => {
+        let yValue;
+        let equation;
+
+        if (dropdownInterpolation.getAttribute('data-dropdown') === 'find-x') {
+            const calc = (formula, n, type) => {
+                let temp = formula;
+                if (type === 'F') {
+                    for (let i = 1; i < n; i++) {
+                        temp = temp * (formula - i);
+                    }
+                } else if (type === 'B') {
+                    for (let i = 1; i < n; i++) {
+                        temp = temp * (formula + i);
+                    }
+                }
+                return temp;
+            };
+
+            if (type === 'F') {
+                yValue = inputY[0];
+                let formula = (findX - inputX[0]) / (inputX[1] - inputX[0]);
+                for (let i = 1; i < size; i++) {
+                    yValue += (calc(formula, i, type) * output[i][i + 1]) / math.factorial(i);
+                }
+            } else if (type === 'B') {
+                yValue = inputY[size - 1];
+                let formula = (findX - inputX[size - 1]) / (inputX[1] - inputX[0]);
+                for (let i = 1; i < size; i++) {
+                    yValue +=
+                        (calc(formula, i, type) * output[output.length - i - 1][i + 1]) / math.factorial(i);
+                }
+            }
+
+            document.querySelector('.result-text').innerHTML = `Y value : ${yValue.toFixed(precisionValue)}`;
+        } else if (dropdownInterpolation.getAttribute('data-dropdown') === 'equation') {
+            const equationCalc = (equationFormula, n, type) => {
+                let temp = equationFormula;
+                if (type === 'F') {
+                    for (let i = 1; i < n; i++) temp = `${temp} * (${equationFormula} - ${i})`;
+                } else if (type === 'B') {
+                    for (let i = 1; i < n; i++) temp = `${temp} * (${equationFormula} + ${i})`;
+                }
+                return temp;
+            };
+
+            if (type === 'F') {
+                equation = `${inputY[0]}`;
+                let equationFormula = `(${variable} - ${inputX[0]}) / ${inputX[1] - inputX[0]}`;
+                for (let i = 1; i < size; i++) {
+                    equation += ` + ${equationCalc(equationFormula, i, type)} * ${
+                        output[i][i + 1] / math.factorial(i)
+                    }`;
+                }
+            } else if (type === 'B') {
+                equation = `${inputY[size - 1]}`;
+                let equationFormula = `(${variable} - ${inputX[size - 1]}) / ${inputX[1] - inputX[0]}`;
+                for (let i = 1; i < size; i++) {
+                    equation += ` + ${equationCalc(equationFormula, i, type)} * ${
+                        output[output.length - i - 1][i + 1] / math.factorial(i)
+                    }`;
+                }
+            }
+
+            document.querySelector('.result-text').innerHTML = `Equation : &nbsp; ${math
+                .rationalize(math.simplify(equation))
+                .toString()}`;
+        }
+    };
+
+    const calculateLagrangeInterpolation = () => {
+        if (dropdownInterpolation.getAttribute('data-dropdown') === 'find-x') {
+            let yValue = 0;
+            for (let i = 0; i < size; i++) {
+                temp = 1;
+
+                for (let j = 0; j < size; j++) {
+                    if (i !== j) {
+                        temp *= (findX - inputX[j]) / (inputX[i] - inputX[j]);
+                    }
+                }
+
+                yValue += temp * inputY[i];
+            }
+            document.querySelector('.result-text').style.display = 'flex';
+            document.querySelector('.result-text').innerHTML = `Y value : ${yValue.toFixed(precisionValue)}`;
+        } else if (dropdownInterpolation.getAttribute('data-dropdown') === 'equation') {
+            let equation = '0';
+            for (let i = 0; i < size; i++) {
+                temp = '1';
+
+                for (let j = 0; j < size; j++) {
+                    if (i !== j) {
+                        temp = `${temp} * (${variable} - ${inputX[j]}) / ${inputX[i] - inputX[j]}`;
+                    }
+                }
+
+                equation = `${equation} + ${temp} * ${inputY[i]}`;
+            }
+            document.querySelector('.result-text').style.display = 'flex';
+            document.querySelector('.result-text').innerHTML = `Equation : ${math
+                .rationalize(math.simplify(equation))
+                .toString()}`;
+        }
+    };
+
+    if (type === 'F' || type === 'B') {
+        const output = tableValues(inputX, inputY, 'I', precisionValue);
+
+        const finalOutput = [];
+        for (let i = 0; i < output[0].length; i++) {
+            const temp = [];
+            for (let j = 0; j < output.length; j++) {
+                temp[j] = output[j][i];
+            }
+            finalOutput[i] = temp;
+        }
+
+        const headElements = tableHead(size, 'I', type);
+        createTable(headElements, ...finalOutput);
+        interpolationResult(output, type);
+    } else if (type === 'L') {
+        calculateLagrangeInterpolation();
+    }
+});

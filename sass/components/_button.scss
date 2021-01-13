@@ -26,3 +26,52 @@
         bottom: 0;
     }
 }
+
+.btn {
+    font-size: 4rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 0.6rem;
+    transition: all 0.4s;
+
+    &:hover {
+        box-shadow: $shadow-box;
+        transform: translateY(-0.5rem);
+    }
+
+    &:active {
+        box-shadow: $shadow-box-light;
+        transform: translateY(0);
+    }
+
+    &--delete {
+        color: $color-red;
+        height: 5rem;
+        width: 5rem;
+        position: absolute;
+        opacity: 0.4;
+        top: 0;
+        left: 102%;
+        transform: translate(50%, 30%);
+
+        &:hover {
+            opacity: 1;
+            box-shadow: none !important;
+            text-shadow: $shadow-box;
+            transform: translate(50%, 20%) !important;
+        }
+    }
+
+    &--add {
+        width: 20%;
+        color: $color-green;
+        padding: 1rem 2.5rem;
+        border: 0.4rem solid $color-green;
+
+        &:hover {
+            background-color: $color-green;
+            color: $color-white;
+        }
+    }
+}
