@@ -674,11 +674,23 @@ document.querySelector('.interpolation__btn--add').addEventListener('click', eve
 
     document.querySelector('.interpolation__btn--add').insertAdjacentHTML('beforebegin', cell);
 });
+document.querySelector('.divided-difference__btn--add').addEventListener('click', event => {
+    event.preventDefault();
+
+    const cell = `<div class="form__row"><input class="form__x-value form__x-value--divided-difference" type="number" min="1" max="8" placeholder="X" /> <input class="form__y-value form__y-value--divided-difference" type="text" placeholder="Y" /> <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a> </div>`;
+
+    document.querySelector('.divided-difference__btn--add').insertAdjacentHTML('beforebegin', cell);
+});
 
 const calculateInterpolationInputs = [
     document.querySelector('.form__find-x--interpolation'),
     document.querySelector('.form__precision--interpolation'),
     document.querySelector('.form__variable--interpolation'),
+];
+const calculateDividedDifferenceInputs = [
+    document.querySelector('.form__find-x--divided-difference'),
+    document.querySelector('.form__precision--divided-difference'),
+    document.querySelector('.form__variable--divided-difference'),
 ];
 
 calculateInterpolationInputs.forEach(input => {
@@ -686,6 +698,14 @@ calculateInterpolationInputs.forEach(input => {
         if (event.keyCode === 13) {
             event.preventDefault();
             document.querySelector('.form__btn--interpolation').click();
+        }
+    });
+});
+calculateDividedDifferenceInputs.forEach(input => {
+    input.addEventListener('keydown', event => {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.querySelector('.form__btn--divided-difference').click();
         }
     });
 });
@@ -719,22 +739,39 @@ dropdownOptionTitle.forEach(option => {
 const findXValue = () => {
     document.querySelector('.form__find-x--interpolation').classList.remove('form__input--disabled');
     document.querySelector('.form__variable--interpolation').classList.add('form__input--disabled');
+
+    document.querySelector('.form__find-x--divided-difference').classList.remove('form__input--disabled');
+    document.querySelector('.form__variable--divided-difference').classList.add('form__input--disabled');
 };
 
 const findEquation = () => {
     document.querySelector('.form__find-x--interpolation').classList.add('form__input--disabled');
     document.querySelector('.form__variable--interpolation').classList.remove('form__input--disabled');
+
+    document.querySelector('.form__find-x--divided-difference').classList.add('form__input--disabled');
+    document.querySelector('.form__variable--divided-difference').classList.remove('form__input--disabled');
 };
 
 const dropdownOptionsInterpolation = document.querySelectorAll('.dropdown__option--interpolation');
 const dropdownSelectedInterpolation = document.querySelector('.dropdown__text--interpolation');
+const dropdownOptionsDividedDifference = document.querySelectorAll('.dropdown__option--divided-difference');
+const dropdownSelectedDividedDifference = document.querySelector('.dropdown__text--divided-difference');
 
 const dropdownInterpolation = document.querySelector('.dropdown__text--interpolation');
+const dropdownDividedDifference = document.querySelector('.dropdown__text--divided-difference');
 
 dropdownOptionsInterpolation.forEach(option => {
     option.addEventListener('click', () => {
         dropdownInterpolation.setAttribute('data-dropdown', option.getAttribute('data-option'));
         dropdownSelectedInterpolation.innerHTML = option.innerHTML + '<i class="fas fa-caret-down"></i>';
+        if (option.getAttribute('data-option') === 'find-x') findXValue();
+        else findEquation();
+    });
+});
+dropdownOptionsDividedDifference.forEach(option => {
+    option.addEventListener('click', () => {
+        dropdownDividedDifference.setAttribute('data-dropdown', option.getAttribute('data-option'));
+        dropdownSelectedDividedDifference.innerHTML = option.innerHTML + '<i class="fas fa-caret-down"></i>';
         if (option.getAttribute('data-option') === 'find-x') findXValue();
         else findEquation();
     });
@@ -1011,4 +1048,111 @@ document.querySelector('.form__btn--interpolation').addEventListener('click', ev
     } else if (type === 'L') {
         calculateLagrangeInterpolation();
     }
+});
+
+document.querySelector('.form__btn--divided-difference').addEventListener('click', event => {
+    event.preventDefault();
+    resetTable();
+
+    const questionX = document.querySelectorAll('.form__x-value--divided-difference');
+    const questionY = document.querySelectorAll('.form__y-value--divided-difference');
+    const findX = parseFloat(document.querySelector('.form__find-x--divided-difference').value);
+
+    let variable = document.querySelector('.form__variable--divided-difference').value;
+    variable = variable ? variable : 'x';
+
+    let precisionValue = parseFloat(document.querySelector('.form__precision--divided-difference').value);
+    precisionValue = precisionValue ? precisionValue : 4;
+
+    const inputX = [];
+    const inputY = [];
+
+    try {
+        if (precisionValue > 12) return alert('Please set a precision value less than 12');
+        document.querySelector('.form__precision--divided-difference').value = precisionValue;
+
+        document.querySelector('.form__variable--divided-difference').value = variable;
+
+        for (let i = 0; i < questionX.length; i++) {
+            if (questionX[i].value && questionY[i].value) {
+                inputX[i] = parseFloat(questionX[i].value);
+                inputY[i] = parseFloat(questionY[i].value);
+            } else {
+                const error = `<small style="display: block;" class="form__error form__error--divided-difference">* Don't leave empty or half filled blanks</small>`;
+
+                if (!questionY[i].value) questionY[i].focus();
+                if (!questionX[i].value) questionX[i].focus();
+
+                if (!document.querySelector('.form__error'))
+                    return document
+                        .querySelector('.divided-difference__btn--add')
+                        .insertAdjacentHTML('afterend', error);
+                return false;
+            }
+        }
+
+        if (document.querySelector('.form__error')) document.querySelector('.form__error').remove();
+        document.querySelector('.form__required--divided-difference').style.display = 'none';
+        if (dropdownDividedDifference.getAttribute('data-dropdown') === 'find-x') {
+            if (!findX && findX !== 0) {
+                document.querySelector('.form__find-x--divided-difference').focus();
+                return (document.querySelector('.form__required--divided-difference').style.display =
+                    'block');
+            }
+        }
+    } catch (error) {
+        return alert(error);
+    }
+
+    const size = inputX.length;
+
+    const DividedDifferenceResult = output => {
+        let yValue;
+        let equation;
+
+        if (dropdownDividedDifference.getAttribute('data-dropdown') === 'find-x') {
+            const calc = i => {
+                let temp = 1;
+                for (let j = 0; j < i; j++) temp = temp * (findX - inputX[j]);
+                return temp;
+            };
+
+            yValue = inputY[0];
+            for (let i = 1; i < size; i++) {
+                yValue += calc(i) * output[i][i + 1];
+            }
+
+            document.querySelector('.result-text').innerHTML = `Y value : ${yValue.toFixed(precisionValue)}`;
+        } else if (dropdownDividedDifference.getAttribute('data-dropdown') === 'equation') {
+            const equationCalc = i => {
+                let temp = `1`;
+                for (let j = 0; j < i; j++) temp = `${temp} * (${variable} - ${inputX[j]})`;
+                return temp;
+            };
+
+            equation = `${inputY[0]}`;
+            for (let i = 1; i < size; i++) {
+                equation += ` + ${equationCalc(i)} * ${output[i][i + 1]}`;
+            }
+
+            document.querySelector('.result-text').innerHTML = `Equation : &nbsp; ${math
+                .rationalize(math.simplify(equation))
+                .toString()}`;
+        }
+    };
+
+    const output = tableValues(inputX, inputY, 'D', precisionValue);
+
+    const finalOutput = [];
+    for (let i = 0; i < output[0].length; i++) {
+        const temp = [];
+        for (let j = 0; j < output.length; j++) {
+            temp[j] = output[j][i];
+        }
+        finalOutput[i] = temp;
+    }
+
+    const headElements = tableHead(size, 'D');
+    createTable(headElements, ...finalOutput);
+    DividedDifferenceResult(output);
 });

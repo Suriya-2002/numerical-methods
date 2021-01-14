@@ -599,6 +599,104 @@
                 </form>
             </div>
 
+            <div
+                class="divided-difference method"
+                id="divided-difference-method"
+                data-method="divided-difference"
+            >
+                <div class="center-text margin-bottom--huge">
+                    <h1 class="heading-method margin-bottom--medium">Divided difference method</h1>
+                </div>
+
+                <div class="information margin-bottom--huge">
+                    <p class="paragraph paragraph--information margin-bottom--huge">
+                        Interpolation is a method of finding new data points within the range of a discrete
+                        set of known data points. In other words, interpolation is the technique to estimate
+                        the value of a mathematical function, for any intermediate value of the independent
+                        variable. Newton’s divided difference interpolation formula is a interpolation
+                        technique used when the interval difference is not same for all sequence of values.
+                    </p>
+
+                    <div class="center-text margin-bottom--huge">
+                        <h1 class="heading-method margin-bottom--medium">Calculator</h1>
+                    </div>
+                </div>
+
+                <form class="form">
+                    <div class="form__row">
+                        <input
+                            class="form__x-value form__x-value--divided-difference"
+                            type="number"
+                            placeholder="X"
+                        />
+                        <input
+                            class="form__y-value form__y-value--divided-difference"
+                            type="number"
+                            placeholder="Y"
+                        />
+                    </div>
+
+                    <button class="btn btn--add divided-difference__btn--add margin-bottom--huge">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+
+                    <div class="form__row margin-top--medium">
+                        <div class="dropdown dropdown--form margin-bottom--medium">
+                            <span
+                                data-dropdown="find-x"
+                                class="dropdown__text dropdown__text--divided-difference dropdown__text--form"
+                                >Find Value of X: <i class="fas fa-caret-down"></i
+                            ></span>
+                            <input type="button" class="dropdown__btn" />
+
+                            <ul class="dropdown__list">
+                                <li class="dropdown__option-block">
+                                    <span
+                                        data-option="find-x"
+                                        class="dropdown__option dropdown__option--divided-difference"
+                                        >Find Value of X:</span
+                                    >
+                                </li>
+                                <li class="dropdown__option-block">
+                                    <span
+                                        data-option="equation"
+                                        class="dropdown__option dropdown__option--divided-difference"
+                                        >Find Equation:</span
+                                    >
+                                </li>
+                            </ul>
+                        </div>
+
+                        <input
+                            class="form__find-x form__find-x--divided-difference"
+                            type="text"
+                            placeholder="Enter X"
+                        />
+                    </div>
+                    <small
+                        class="form__required form__required--second-block form__required--divided-difference"
+                        >* Required</small
+                    >
+
+                    <div class="form__row">
+                        <input
+                            class="form__precision form__precision--divided-difference"
+                            type="number"
+                            min="1"
+                            max="8"
+                            placeholder="Precision"
+                        />
+                        <input
+                            class="form__variable form__variable--divided-difference"
+                            type="text"
+                            placeholder="Variable"
+                        />
+                    </div>
+
+                    <button type="submit" class="form__btn form__btn--divided-difference">Calculate</button>
+                </form>
+            </div>
+
             <div class="table-container">
                 <table class="table">
                     <thead class="table__head">
