@@ -61,6 +61,11 @@
             text-shadow: $shadow-box;
             transform: translate(50%, 20%) !important;
         }
+
+        @include responsive(tab-l) {
+            left: 50%;
+            transform: translate(-50%, 30%);
+        }
     }
 
     &--add {

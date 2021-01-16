@@ -114,6 +114,12 @@
     &__item {
         margin: 4rem 0;
         transform: translateX(160rem);
+
+        @include responsive(tab-l) {
+            margin: 6rem 0;
+            text-align: center;
+            transform: translateX(100rem);
+        }
     }
 
     &__link {

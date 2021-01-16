@@ -16,5 +16,9 @@
     &--intro {
         padding: 5rem 20rem;
         background-color: rgba($color-grey-light-1, 1);
+
+        @include responsive(tab-l) {
+            padding: 5rem 10rem;
+        }
     }
 }

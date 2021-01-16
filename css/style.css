@@ -14,6 +14,9 @@ html {
   @media only screen and (max-width: 87.5em) {
     html {
       font-size: 40%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      font-size: 35%; } }
 
 body {
   box-sizing: border-box; }
@@ -42,11 +45,20 @@ body {
     font-size: 10rem;
     letter-spacing: 1rem;
     text-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4); }
+    @media only screen and (max-width: 75em) {
+      .heading-primary--main {
+        line-height: 1.2; } }
   .heading-primary--sub {
     display: block;
     font-size: 3rem;
     letter-spacing: 3rem;
     text-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4); }
+    @media only screen and (max-width: 75em) {
+      .heading-primary--sub {
+        margin-top: 10rem; } }
+  @media only screen and (max-width: 75em) {
+    .heading-primary {
+      padding: 0 5rem; } }
 
 .heading-method {
   color: #551a8b;
@@ -85,6 +97,8 @@ body {
     font-size: 3rem;
     color: #333;
     width: 100%; }
+  .paragraph--footer {
+    width: 95%; }
 
 .margin-top--medium {
   margin-top: 4rem !important; }
@@ -158,6 +172,10 @@ body {
       box-shadow: none !important;
       text-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
       transform: translate(50%, 20%) !important; }
+    @media only screen and (max-width: 75em) {
+      .btn--delete {
+        left: 50%;
+        transform: translate(-50%, 30%); } }
   .btn--add {
     width: 20%;
     color: #7ed56f;
@@ -416,6 +434,9 @@ body {
 .information--intro {
   padding: 5rem 20rem;
   background-color: #eeeeee; }
+  @media only screen and (max-width: 75em) {
+    .information--intro {
+      padding: 5rem 10rem; } }
 
 .navigation__tool-tip {
   height: 7rem;
@@ -516,6 +537,11 @@ body {
 .navigation__item {
   margin: 4rem 0;
   transform: translateX(160rem); }
+  @media only screen and (max-width: 75em) {
+    .navigation__item {
+      margin: 6rem 0;
+      text-align: center;
+      transform: translateX(100rem); } }
 
 .navigation__link:link, .navigation__link:visited {
   text-decoration: none;
@@ -529,7 +555,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 130rem;
+  max-width: 130rem;
   margin: 0 auto; }
 
 .table {
@@ -561,6 +587,9 @@ body {
 body {
   padding: 5rem;
   height: 100%; }
+  @media only screen and (max-width: 75em) {
+    body {
+      padding: 0; } }
 
 .footer {
   padding: 3rem;
@@ -594,7 +623,7 @@ body {
 
 .method {
   display: none;
-  width: 130rem;
+  max-width: 130rem;
   margin: 0 auto; }
   .method--active {
     display: block; }

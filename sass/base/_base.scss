@@ -17,6 +17,10 @@ html {
     @include responsive(1400) {
         font-size: 40%;
     }
+
+    @include responsive(tab-p) {
+        font-size: 35%;
+    }
 }
 
 body {

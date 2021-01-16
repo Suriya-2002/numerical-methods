@@ -17,6 +17,10 @@ body {
         font-size: 10rem;
         letter-spacing: 1rem;
         text-shadow: $shadow-box;
+
+        @include responsive(tab-l) {
+            line-height: 1.2;
+        }
     }
 
     &--sub {
@@ -24,6 +28,14 @@ body {
         font-size: 3rem;
         letter-spacing: 3rem;
         text-shadow: $shadow-box;
+
+        @include responsive(tab-l) {
+            margin-top: 10rem;
+        }
+    }
+
+    @include responsive(tab-l) {
+        padding: 0 5rem;
     }
 }
 
@@ -67,5 +79,9 @@ body {
         font-size: 3rem;
         color: $color-grey-dark-4;
         width: 100%;
+    }
+
+    &--footer {
+        width: 95%;
     }
 }
