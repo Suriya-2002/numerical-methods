@@ -82,6 +82,8 @@ body {
     }
 
     &--footer {
-        width: 95%;
+        @include responsive(tab-l) {
+            width: 95%;
+        }
     }
 }

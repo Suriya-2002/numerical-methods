@@ -97,8 +97,9 @@ body {
     font-size: 3rem;
     color: #333;
     width: 100%; }
-  .paragraph--footer {
-    width: 95%; }
+  @media only screen and (max-width: 75em) {
+    .paragraph--footer {
+      width: 95%; } }
 
 .margin-top--medium {
   margin-top: 4rem !important; }
