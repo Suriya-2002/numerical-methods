@@ -35,7 +35,8 @@
     border-radius: 0.6rem;
     transition: all 0.4s;
 
-    &:hover {
+    &:hover,
+    &:focus {
         box-shadow: $shadow-box;
         transform: translateY(-0.5rem);
     }
@@ -55,7 +56,8 @@
         left: 102%;
         transform: translate(50%, 30%);
 
-        &:hover {
+        &:hover,
+        &:focus {
             opacity: 1;
             box-shadow: none !important;
             text-shadow: $shadow-box;
@@ -74,7 +76,8 @@
         padding: 1rem 2.5rem;
         border: 0.4rem solid $color-green;
 
-        &:hover {
+        &:hover,
+        &:focus {
             background-color: $color-green;
             color: $color-white;
         }

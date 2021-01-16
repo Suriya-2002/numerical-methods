@@ -151,6 +151,7 @@ document.querySelector('.coverpage-title').addEventListener('click', () => {
     document.querySelectorAll('.method').forEach(method => {
         method.classList.remove('method--active');
     });
+    resetTable();
 });
 
 methodLink.forEach(link => {
@@ -778,6 +779,9 @@ const paragraphInterpolation = [
     document.querySelector('.paragraph--lagrange'),
 ];
 
+paragraphInterpolation[1].style.display = 'none';
+paragraphInterpolation[2].style.display = 'none';
+
 dropdownOptionTitle.forEach(option => {
     option.addEventListener('click', () => {
         resetTable();
@@ -796,18 +800,23 @@ dropdownOptionTitle.forEach(option => {
     });
 });
 
-const findXValue = () => {
+document.querySelector('.form__variable--interpolation').classList.add('form__input--disabled');
+document.querySelector('.form__variable--divided-difference').classList.add('form__input--disabled');
+
+const findXValueInterpolation = () => {
     document.querySelector('.form__find-x--interpolation').classList.remove('form__input--disabled');
     document.querySelector('.form__variable--interpolation').classList.add('form__input--disabled');
-
+};
+const findXValueDividedDifference = () => {
     document.querySelector('.form__find-x--divided-difference').classList.remove('form__input--disabled');
     document.querySelector('.form__variable--divided-difference').classList.add('form__input--disabled');
 };
 
-const findEquation = () => {
+const findEquationInterpolation = () => {
     document.querySelector('.form__find-x--interpolation').classList.add('form__input--disabled');
     document.querySelector('.form__variable--interpolation').classList.remove('form__input--disabled');
-
+};
+const findEquationDividedDifference = () => {
     document.querySelector('.form__find-x--divided-difference').classList.add('form__input--disabled');
     document.querySelector('.form__variable--divided-difference').classList.remove('form__input--disabled');
 };
@@ -824,16 +833,16 @@ dropdownOptionsInterpolation.forEach(option => {
     option.addEventListener('click', () => {
         dropdownInterpolation.setAttribute('data-dropdown', option.getAttribute('data-option'));
         dropdownSelectedInterpolation.innerHTML = option.innerHTML + '<i class="fas fa-caret-down"></i>';
-        if (option.getAttribute('data-option') === 'find-x') findXValue();
-        else findEquation();
+        if (option.getAttribute('data-option') === 'find-x') findXValueInterpolation();
+        else findEquationInterpolation();
     });
 });
 dropdownOptionsDividedDifference.forEach(option => {
     option.addEventListener('click', () => {
         dropdownDividedDifference.setAttribute('data-dropdown', option.getAttribute('data-option'));
         dropdownSelectedDividedDifference.innerHTML = option.innerHTML + '<i class="fas fa-caret-down"></i>';
-        if (option.getAttribute('data-option') === 'find-x') findXValue();
-        else findEquation();
+        if (option.getAttribute('data-option') === 'find-x') findXValueDividedDifference();
+        else findEquationDividedDifference();
     });
 });
 
