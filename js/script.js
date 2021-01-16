@@ -730,14 +730,14 @@ document.querySelector('.form__btn--fixed-point-method').addEventListener('click
 document.querySelector('.interpolation__btn--add').addEventListener('click', event => {
     event.preventDefault();
 
-    const cell = `<div class="form__row"><input class="form__x-value form__x-value--interpolation" type="number" min="1" max="8" placeholder="X" /> <input class="form__y-value form__y-value--interpolation" type="text" placeholder="Y" /> <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a> </div>`;
+    const cell = `<div class="form__row"><input class="form__x-value form__x-value--interpolation" type="number" min="1" max="8" placeholder="X" /> <input class="form__y-value form__y-value--interpolation" type="number" placeholder="Y" /> <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a> </div>`;
 
     document.querySelector('.interpolation__btn--add').insertAdjacentHTML('beforebegin', cell);
 });
 document.querySelector('.divided-difference__btn--add').addEventListener('click', event => {
     event.preventDefault();
 
-    const cell = `<div class="form__row"><input class="form__x-value form__x-value--divided-difference" type="number" min="1" max="8" placeholder="X" /> <input class="form__y-value form__y-value--divided-difference" type="text" placeholder="Y" /> <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a> </div>`;
+    const cell = `<div class="form__row"><input class="form__x-value form__x-value--divided-difference" type="number" min="1" max="8" placeholder="X" /> <input class="form__y-value form__y-value--divided-difference" type="number" placeholder="Y" /> <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a> </div>`;
 
     document.querySelector('.divided-difference__btn--add').insertAdjacentHTML('beforebegin', cell);
 });
