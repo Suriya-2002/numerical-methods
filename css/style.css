@@ -17,6 +17,15 @@ html {
   @media only screen and (max-width: 56.25em) {
     html {
       font-size: 35%; } }
+  @media only screen and (max-width: 37.5em) {
+    html {
+      font-size: 30%; } }
+  @media only screen and (max-width: 31.25em) {
+    html {
+      font-size: 25%; } }
+  @media only screen and (max-width: 21.875em) {
+    html {
+      font-size: 20%; } }
 
 body {
   box-sizing: border-box; }
@@ -145,6 +154,11 @@ body {
   .btn-primary:active {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
     bottom: 0; }
+  @media only screen and (max-width: 37.5em) {
+    .btn-primary--method {
+      width: 100%;
+      display: block;
+      text-align: center; } }
 
 .btn {
   font-size: 4rem;
@@ -178,7 +192,7 @@ body {
         left: 50%;
         transform: translate(-50%, 30%); } }
   .btn--add {
-    width: 20%;
+    width: 30rem;
     color: #7ed56f;
     padding: 1rem 2.5rem;
     border: 0.4rem solid #7ed56f; }
@@ -230,6 +244,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
+    @media only screen and (max-width: 37.5em) {
+      .dropdown__text--title {
+        display: flex;
+        justify-content: center;
+        align-items: center; } }
+  @media only screen and (max-width: 37.5em) {
+    .dropdown__support-text {
+      display: none; } }
   .dropdown__list {
     width: 100%;
     height: 16rem;
@@ -428,6 +450,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center; }
+  @media only screen and (max-width: 37.5em) {
+    .information__buttons {
+      display: block; } }
 
 .information__item {
   margin-bottom: 4rem; }
@@ -465,6 +490,10 @@ body {
     background-color: #fff;
     position: absolute;
     right: -3rem; }
+  @media only screen and (max-width: 37.5em) {
+    .navigation__tool-tip {
+      top: 7rem;
+      right: 19rem; } }
 
 .navigation__lines {
   background-color: #fff;
@@ -486,6 +515,10 @@ body {
   .navigation__lines:active {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
     transform: translateY(0); }
+  @media only screen and (max-width: 37.5em) {
+    .navigation__lines {
+      top: 5rem;
+      right: 5rem; } }
 
 .navigation:hover .navigation__line--2 {
   width: 6rem;
@@ -543,6 +576,9 @@ body {
       margin: 6rem 0;
       text-align: center;
       transform: translateX(100rem); } }
+  @media only screen and (max-width: 28.125em) {
+    .navigation__item {
+      transform: translateX(70rem); } }
 
 .navigation__link:link, .navigation__link:visited {
   text-decoration: none;

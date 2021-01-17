@@ -27,6 +27,11 @@
             position: absolute;
             right: -3rem;
         }
+
+        @include responsive(mob) {
+            top: 7rem;
+            right: 19rem;
+        }
     }
 
     &__lines {
@@ -52,6 +57,11 @@
         &:active {
             box-shadow: $shadow-box-light;
             transform: translateY(0);
+        }
+
+        @include responsive(mob) {
+            top: 5rem;
+            right: 5rem;
         }
     }
 
@@ -119,6 +129,10 @@
             margin: 6rem 0;
             text-align: center;
             transform: translateX(100rem);
+        }
+
+        @include responsive(450) {
+            transform: translateX(70rem);
         }
     }
 

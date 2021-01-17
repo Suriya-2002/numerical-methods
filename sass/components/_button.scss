@@ -25,6 +25,14 @@
         box-shadow: $shadow-box-light;
         bottom: 0;
     }
+
+    &--method {
+        @include responsive(mob) {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
 }
 
 .btn {
@@ -71,7 +79,7 @@
     }
 
     &--add {
-        width: 20%;
+        width: 30rem;
         color: $color-green;
         padding: 1rem 2.5rem;
         border: 0.4rem solid $color-green;
