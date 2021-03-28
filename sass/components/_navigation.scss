@@ -1,21 +1,22 @@
 .navigation {
     &__tool-tip {
-        height: 7rem;
-        width: 20rem;
+        height: 6rem;
+        width: 16rem;
         background-color: $color-white;
         color: $color-blue;
-        font-size: 2.8rem;
+        font-size: 2rem;
         font-weight: 600;
         text-transform: uppercase;
         position: fixed;
         text-align: center;
-        top: 10rem;
-        right: 22rem;
+        top: 9rem;
+        right: 20rem;
         z-index: 5;
         display: flex;
         justify-content: center;
         align-items: center;
         pointer-events: none;
+        opacity: 0.6;
 
         &:after {
             content: '';
@@ -29,8 +30,8 @@
         }
 
         @include responsive(mob) {
-            top: 7rem;
-            right: 19rem;
+            top: 6rem;
+            right: 18rem;
         }
     }
 
@@ -41,8 +42,6 @@
         position: fixed;
         top: 8rem;
         right: 8rem;
-        height: 10rem;
-        width: 10rem;
         border-radius: 50%;
         box-shadow: $shadow-box-light;
         z-index: 5;
@@ -66,37 +65,37 @@
     }
 
     &:hover &__line--2 {
-        width: 6rem;
-        left: 5rem;
+        width: 4.8rem;
+        left: 4rem;
     }
 
     &__line {
         background-color: $color-blue;
-        height: 0.5rem;
-        width: 6rem;
+        height: 0.3rem;
+        width: 4.8rem;
         @include absoluteCenter;
         transition: all 0.3s;
 
         &--1 {
-            top: 3.5rem;
+            top: 2.8rem;
         }
 
         &--2 {
-            width: 4rem;
-            left: 6rem;
+            width: 3.2rem;
+            left: 4.8rem;
             display: inline-block;
         }
 
         &--3 {
-            top: 6.5rem;
+            top: 5.2rem;
         }
     }
 
     &__background {
         position: fixed;
         background-color: rgba($color-grey-light-1, 0.95);
-        top: 9rem;
-        right: 9rem;
+        top: 7.2rem;
+        right: 7.2rem;
         height: 0;
         width: 0;
         border-radius: 50%;
@@ -122,7 +121,7 @@
     }
 
     &__item {
-        margin: 4rem 0;
+        margin: 2rem 0;
         transform: translateX(160rem);
 
         @include responsive(tab-l) {

@@ -7,7 +7,7 @@ methodLink = [...methodLink, ...navigationLink];
 
 const navigationActive = () => {
     gsap.to('.navigation__line--1', {
-        top: '5rem',
+        top: '4rem',
         rotate: '135deg',
         duration: 0.3,
     });
@@ -16,7 +16,7 @@ const navigationActive = () => {
         duration: 0.3,
     });
     gsap.to('.navigation__line--3', {
-        top: '5rem',
+        top: '4rem',
         rotate: '-135deg',
         duration: 0.3,
     });
@@ -60,7 +60,7 @@ const navigationInactive = () => {
         ease: 'power2.in',
     });
     gsap.to('.navigation__line--1', {
-        top: '3.5rem',
+        top: '2.8rem',
         rotate: '0',
         duration: 0.3,
     });
@@ -69,7 +69,7 @@ const navigationInactive = () => {
         duration: 0.3,
     });
     gsap.to('.navigation__line--3', {
-        top: '6.5rem',
+        top: '5.2rem',
         rotate: '0',
         duration: 0.3,
     });
@@ -298,7 +298,7 @@ document.querySelector('.form__btn--bisection-method').addEventListener('click',
             initialGuess1Array,
             initialGuess2Array,
             averageArray,
-            functionArray,
+            functionArray
         );
 
         document.querySelector('.result-text').innerHTML = `Root : ${averageArray[averageArray.length - 1]}`;
@@ -314,7 +314,7 @@ document.querySelector('.form__btn--newton-raphson-method').addEventListener('cl
 
     let question = document.querySelector('.form__question--newton-raphson-method').value;
     let initialGuess = parseFloat(
-        document.querySelector('.form__initial-guess--newton-raphson-method').value,
+        document.querySelector('.form__initial-guess--newton-raphson-method').value
     );
     let derivative = document.querySelector('.form__deriative--newton-raphson-method').value;
 
@@ -387,7 +387,7 @@ document.querySelector('.form__btn--newton-raphson-method').addEventListener('cl
             serialNumbers,
             initialGuessArray,
             functionGuessArray,
-            functionDerivativeArray,
+            functionDerivativeArray
         );
 
         document.querySelector('.result-text').innerHTML = `Root : ${
@@ -518,10 +518,10 @@ document.querySelector('.form__btn--regula-falsi-method').addEventListener('clic
 
     let question = document.querySelector('.form__question--regula-falsi-method').value;
     let initialGuess1 = parseFloat(
-        document.querySelector('.form__initial-guess--regula-falsi-method-1').value,
+        document.querySelector('.form__initial-guess--regula-falsi-method-1').value
     );
     let initialGuess2 = parseFloat(
-        document.querySelector('.form__initial-guess--regula-falsi-method-2').value,
+        document.querySelector('.form__initial-guess--regula-falsi-method-2').value
     );
 
     let variable = document.querySelector('.form__variable--regula-falsi-method').value;
@@ -641,8 +641,8 @@ document.querySelector('.form__btn--fixed-point-method').addEventListener('click
 
             const convergeCondition = Math.abs(
                 math.evaluate(
-                    math.derivative(question, variable).toString().replace(regex, initialGuess.toString()),
-                ),
+                    math.derivative(question, variable).toString().replace(regex, initialGuess.toString())
+                )
             );
 
             if (convergeCondition > 1 || (!convergeCondition && convergeCondition !== 0)) {
@@ -669,7 +669,7 @@ document.querySelector('.form__btn--fixed-point-method').addEventListener('click
         while (
             Math.abs(
                 parseFloat(functionValue.toFixed(precisionValue)) -
-                    parseFloat(calculatedGuess.toFixed(precisionValue)),
+                    parseFloat(calculatedGuess.toFixed(precisionValue))
             ) > Math.pow(10, -1 * precisionValue)
         ) {
             calculatedGuess = functionValue;
@@ -864,8 +864,8 @@ const tableValues = (inputX, inputY, method, precisionValue) => {
                 ) {
                     output[i + counter][j] = parseFloat(
                         (output[i + counter + 1][j - 1] - output[i + counter - 1][j - 1]).toFixed(
-                            precisionValue,
-                        ),
+                            precisionValue
+                        )
                     );
                 }
             }
@@ -883,7 +883,7 @@ const tableValues = (inputX, inputY, method, precisionValue) => {
                         (
                             (output[i + counter - 1][j - 1] - output[i + counter + 1][j - 1]) /
                             (inputX[l] - inputX[k + l])
-                        ).toFixed(precisionValue),
+                        ).toFixed(precisionValue)
                     );
                 }
             }
