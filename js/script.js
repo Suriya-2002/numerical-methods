@@ -707,14 +707,32 @@ document.querySelector('.form__btn--fixed-point-method').addEventListener('click
 document.querySelector('.interpolation__btn--add').addEventListener('click', event => {
     event.preventDefault();
 
-    const cell = `<div class="form__row"><input class="form__x-value form__x-value--interpolation" type="number" min="1" max="8" placeholder="X" /> <input class="form__y-value form__y-value--interpolation" type="number" placeholder="Y" /> <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a> </div>`;
+    const cell = `
+        <div class="form__row">
+            <input class="form__x-value form__x-value--interpolation" type="number" min="1" max="8" placeholder="X" />
+            <input class="form__y-value form__y-value--interpolation" type="number" placeholder="Y" />
+            <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a>
+        </div>
+    `;
 
     document.querySelector('.interpolation__btn--add').insertAdjacentHTML('beforebegin', cell);
 });
 document.querySelector('.divided-difference__btn--add').addEventListener('click', event => {
     event.preventDefault();
 
-    const cell = `<div class="form__row"><input class="form__x-value form__x-value--divided-difference" type="number" min="1" max="8" placeholder="X" /> <input class="form__y-value form__y-value--divided-difference" type="number" placeholder="Y" /> <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a> </div>`;
+    const cell = `
+        <div class="form__row">
+            <input
+                class="form__x-value form__x-value--divided-difference"
+                type="number"
+                min="1"
+                max="8"
+                placeholder="X"
+            />
+            <input class="form__y-value form__y-value--divided-difference" type="number" placeholder="Y" />
+            <a onclick="removeInput(this)" class="btn btn--delete"> <i class="icon--delete fas fa-trash-alt"></i> </a>
+        </div>
+    `;
 
     document.querySelector('.divided-difference__btn--add').insertAdjacentHTML('beforebegin', cell);
 });
@@ -930,7 +948,11 @@ document.querySelector('.form__btn--interpolation').addEventListener('click', ev
                 inputX[i] = parseFloat(questionX[i].value);
                 inputY[i] = parseFloat(questionY[i].value);
             } else {
-                const error = `<small style="display: block;" class="form__error form__error--interpolation">* Don't leave empty or half filled blanks</small>`;
+                const error = `
+                    <small style="display: block" class="form__error form__error--interpolation"
+                        >* Don't leave empty or half filled blanks</small
+                    >
+                `;
 
                 if (!questionY[i].value) questionY[i].focus();
                 if (!questionX[i].value) questionX[i].focus();
@@ -962,7 +984,11 @@ document.querySelector('.form__btn--interpolation').addEventListener('click', ev
         const difference = inputX[1] - inputX[0];
         for (let i = 0; i < size - 1; i++)
             if (inputX[i + 1] - inputX[i] !== difference) {
-                const error = `<small style="display: block;" class="form__error form__error--interpolation">Entered X values do not have a common difference</small>`;
+                const error = `
+                    <small style="display: block" class="form__error form__error--interpolation"
+                        >Entered X values do not have a common difference</small
+                    >
+                `;
                 return document
                     .querySelector('.interpolation__btn--add')
                     .insertAdjacentHTML('afterend', error);
@@ -1123,7 +1149,11 @@ document.querySelector('.form__btn--divided-difference').addEventListener('click
                 inputX[i] = parseFloat(questionX[i].value);
                 inputY[i] = parseFloat(questionY[i].value);
             } else {
-                const error = `<small style="display: block;" class="form__error form__error--divided-difference">* Don't leave empty or half filled blanks</small>`;
+                const error = `
+                    <small style="display: block" class="form__error form__error--divided-difference"
+                        >* Don't leave empty or half filled blanks</small
+                    >
+                `;
 
                 if (!questionY[i].value) questionY[i].focus();
                 if (!questionX[i].value) questionX[i].focus();
