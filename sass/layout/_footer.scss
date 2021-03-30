@@ -9,8 +9,8 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        border-bottom: 0.6rem solid $color-grey-light-2;
-        cursor: pointer;
+        border-bottom: 0.2rem solid $color-grey-light-2;
+        cursor: default;
     }
 
     &__title-hidden {
@@ -22,5 +22,18 @@
     &__title:hover &__title-hidden {
         opacity: 1;
         max-width: 6rem;
+    }
+
+    &__link,
+    &__link:link,
+    &__link:visited {
+        color: $color-grey-dark-2;
+        font-weight: 800;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            color: $color-white;
+        }
     }
 }

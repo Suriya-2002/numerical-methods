@@ -106,9 +106,11 @@ body {
     font-size: 2.3rem;
     color: #333;
     width: 100%; }
-  @media only screen and (max-width: 75em) {
-    .paragraph--footer {
-      width: 95%; } }
+  .paragraph--footer {
+    color: #555; }
+    @media only screen and (max-width: 75em) {
+      .paragraph--footer {
+        width: 95%; } }
 
 .margin-top--medium {
   margin-top: 4rem !important; }
@@ -637,8 +639,8 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 0.6rem solid #ccc;
-    cursor: pointer; }
+    border-bottom: 0.2rem solid #ccc;
+    cursor: default; }
   .footer__title-hidden {
     max-width: 0;
     opacity: 0;
@@ -646,6 +648,13 @@ body {
   .footer__title:hover .footer__title-hidden {
     opacity: 1;
     max-width: 6rem; }
+  .footer__link, .footer__link:link, .footer__link:visited {
+    color: #999;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out; }
+    .footer__link:hover, .footer__link:link:hover, .footer__link:visited:hover {
+      color: #fff; }
 
 .header {
   width: 100%;

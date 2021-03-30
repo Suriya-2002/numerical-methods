@@ -82,6 +82,7 @@ body {
     }
 
     &--footer {
+        color: $color-grey-dark-3;
         @include responsive(tab-l) {
             width: 95%;
         }
