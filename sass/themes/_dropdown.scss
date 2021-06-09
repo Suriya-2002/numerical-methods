@@ -1,0 +1,26 @@
+.dropdown--dark {
+    .dropdown__btn:focus {
+        color: $color-red;
+    }
+
+    .dropdown__text--title {
+        color: $color-red;
+    }
+
+    .dropdown__list {
+        background-color: $color-grey-dark-4;
+    }
+
+    .dropdown__option {
+        color: $color-white;
+    }
+
+    .dropdown__option:hover {
+        background-color: $color-grey-dark-5;
+    }
+}
+
+.dropdown--form-dark {
+    color: $color-white;
+    background-color: $color-grey-dark-4;
+}

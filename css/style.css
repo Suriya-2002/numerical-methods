@@ -685,6 +685,25 @@ body {
   .btn--add-dark:hover, .btn--add-dark:focus {
     color: #000; }
 
+.dropdown--dark .dropdown__btn:focus {
+  color: #e94560; }
+
+.dropdown--dark .dropdown__text--title {
+  color: #e94560; }
+
+.dropdown--dark .dropdown__list {
+  background-color: #333; }
+
+.dropdown--dark .dropdown__option {
+  color: #fff; }
+
+.dropdown--dark .dropdown__option:hover {
+  background-color: #111; }
+
+.dropdown--form-dark {
+  color: #fff;
+  background-color: #333; }
+
 .information--intro-dark {
   background-color: #111; }
 
