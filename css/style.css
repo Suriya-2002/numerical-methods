@@ -673,6 +673,9 @@ body {
   .method--active {
     display: block; }
 
+.body--dark {
+  background-color: #333; }
+
 .btn-primary--dark {
   color: #e94560;
   border-color: #e94560; }
@@ -703,6 +706,9 @@ body {
 .dropdown--form-dark {
   color: #fff;
   background-color: #333; }
+
+.footer--dark {
+  background-color: #000; }
 
 .form--dark .form__question,
 .form--dark .form__full-width {
