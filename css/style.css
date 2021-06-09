@@ -704,6 +704,60 @@ body {
   color: #fff;
   background-color: #333; }
 
+.form--dark .form__question,
+.form--dark .form__full-width {
+  color: #fff;
+  background-color: #333; }
+  .form--dark .form__question:focus,
+  .form--dark .form__full-width:focus {
+    border-color: #e94560; }
+  .form--dark .form__question::placeholder,
+  .form--dark .form__full-width::placeholder {
+    color: #ccc; }
+
+.form--dark .form__initial-guess,
+.form--dark .form__deriative,
+.form--dark .form__precision,
+.form--dark .form__variable,
+.form--dark .form__x-value,
+.form--dark .form__y-value,
+.form--dark .form__find-x {
+  color: #fff;
+  background-color: #333; }
+  .form--dark .form__initial-guess:focus,
+  .form--dark .form__deriative:focus,
+  .form--dark .form__precision:focus,
+  .form--dark .form__variable:focus,
+  .form--dark .form__x-value:focus,
+  .form--dark .form__y-value:focus,
+  .form--dark .form__find-x:focus {
+    border-color: #e94560; }
+  .form--dark .form__initial-guess::placeholder,
+  .form--dark .form__deriative::placeholder,
+  .form--dark .form__precision::placeholder,
+  .form--dark .form__variable::placeholder,
+  .form--dark .form__x-value::placeholder,
+  .form--dark .form__y-value::placeholder,
+  .form--dark .form__find-x::placeholder {
+    color: #ccc; }
+
+.form--dark .form__dropdown {
+  background-color: #000; }
+
+.form--dark .form__btn-dropdown:focus {
+  color: #e94560; }
+
+.form--dark .form__list-dropdown {
+  background-color: #000; }
+
+.form--dark .form__option-dropdown:hover {
+  background-color: #111; }
+
+.form--dark .form__btn {
+  color: #111;
+  background-color: #e94560;
+  border-color: #e94560; }
+
 .information--intro-dark {
   background-color: #111; }
 
@@ -731,12 +785,27 @@ body {
 .navigation--dark .navigation__link:active, .navigation--dark .navigation__link:focus {
   color: #e94560; }
 
+.table--dark {
+  background-color: rgba(233, 69, 96, 0.1); }
+  .table--dark .table__head {
+    color: #111; }
+  .table--dark .table__row:last-child {
+    border-color: #e94560; }
+  .table--dark .table__body {
+    color: #fff; }
+  .table--dark .table__body .table__row:nth-of-type(odd) {
+    background-color: #111; }
+  .table--dark .table__body .table__row:nth-of-type(even) {
+    background-color: #333; }
+  .table--dark .table__head .table__row {
+    background-color: #e94560; }
+
 .heading-method--dark {
   color: #e94560; }
 
 .result-text--dark {
   color: #eee;
-  background-color: #551a8b; }
+  background-color: #e94560; }
 
 .paragraph--dark {
   color: #ccc; }

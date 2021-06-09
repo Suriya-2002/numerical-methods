@@ -1,0 +1,31 @@
+.table--dark {
+    background-color: rgba($color-red, 0.1);
+
+    .table__head {
+        color: $color-grey-dark-5;
+    }
+
+    .table__row {
+        &:last-child {
+            border-color: $color-red;
+        }
+    }
+
+    .table__body {
+        color: $color-white;
+    }
+
+    .table__body .table__row {
+        &:nth-of-type(odd) {
+            background-color: $color-grey-dark-5;
+        }
+
+        &:nth-of-type(even) {
+            background-color: $color-grey-dark-4;
+        }
+    }
+
+    .table__head .table__row {
+        background-color: $color-red;
+    }
+}

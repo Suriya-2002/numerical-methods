@@ -1,0 +1,60 @@
+.form--dark {
+    .form__question,
+    .form__full-width {
+        color: $color-white;
+        background-color: $color-grey-dark-4;
+
+        &:focus {
+            border-color: $color-red;
+        }
+
+        &::placeholder {
+            color: $color-grey-light-2;
+        }
+    }
+
+    .form__initial-guess,
+    .form__deriative,
+    .form__precision,
+    .form__variable,
+    .form__x-value,
+    .form__y-value,
+    .form__find-x {
+        color: $color-white;
+        background-color: $color-grey-dark-4;
+
+        &:focus {
+            border-color: $color-red;
+        }
+
+        &::placeholder {
+            color: $color-grey-light-2;
+        }
+    }
+
+    .form__dropdown {
+        background-color: $color-black;
+    }
+
+    .form__btn-dropdown {
+        &:focus {
+            color: $color-red;
+        }
+    }
+
+    .form__list-dropdown {
+        background-color: $color-black;
+    }
+
+    .form__option-dropdown {
+        &:hover {
+            background-color: $color-grey-dark-5;
+        }
+    }
+
+    .form__btn {
+        color: $color-grey-dark-5;
+        background-color: $color-red;
+        border-color: $color-red;
+    }
+}
