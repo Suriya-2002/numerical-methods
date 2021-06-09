@@ -1,0 +1,18 @@
+.btn-primary--dark {
+    color: $color-red;
+    border-color: $color-red;
+
+    &:hover {
+        background-color: $color-red;
+        color: $color-black !important;
+    }
+}
+
+.btn--add-dark {
+    background-color: $color-grey-dark-5;
+
+    &:hover,
+    &:focus {
+        color: $color-black;
+    }
+}

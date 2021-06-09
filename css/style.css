@@ -461,7 +461,7 @@ body {
 
 .information--intro {
   padding: 5rem 20rem;
-  background-color: #eeeeee; }
+  background-color: #eee; }
   @media only screen and (max-width: 75em) {
     .information--intro {
       padding: 5rem 10rem; } }
@@ -663,7 +663,7 @@ body {
   background-size: cover; }
 
 .section-methods {
-  background-color: #eeeeee;
+  background-color: #eee;
   padding: 0 3rem 0rem 3rem; }
 
 .method {
@@ -672,3 +672,36 @@ body {
   margin: 0 auto; }
   .method--active {
     display: block; }
+
+.btn-primary--dark {
+  color: #e94560;
+  border-color: #e94560; }
+  .btn-primary--dark:hover {
+    background-color: #e94560;
+    color: #000 !important; }
+
+.btn--add-dark {
+  background-color: #111; }
+  .btn--add-dark:hover, .btn--add-dark:focus {
+    color: #000; }
+
+.navigation--dark .navigation__tool-tip {
+  background-color: #000;
+  color: #e94560; }
+  .navigation--dark .navigation__tool-tip:after {
+    background-color: #000; }
+
+.navigation--dark .navigation__lines {
+  background-color: #000; }
+
+.navigation--dark .navigation__line {
+  background-color: #e94560; }
+
+.navigation--dark .navigation__background {
+  background-color: rgba(17, 17, 17, 0.95); }
+
+.navigation--dark .navigation__link:link, .navigation--dark .navigation__link:visited {
+  color: #e94560; }
+
+.navigation--dark .navigation__link:active, .navigation--dark .navigation__link:focus {
+  color: #e94560; }

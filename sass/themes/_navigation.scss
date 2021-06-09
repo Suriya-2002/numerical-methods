@@ -1,0 +1,34 @@
+.navigation--dark {
+    .navigation__tool-tip {
+        background-color: $color-black;
+        color: $color-red;
+
+        &:after {
+            background-color: $color-black;
+        }
+    }
+
+    .navigation__lines {
+        background-color: $color-black;
+    }
+
+    .navigation__line {
+        background-color: $color-red;
+    }
+
+    .navigation__background {
+        background-color: rgba($color-grey-dark-5, 0.95);
+    }
+
+    .navigation__link {
+        &:link,
+        &:visited {
+            color: $color-red;
+        }
+
+        &:active,
+        &:focus {
+            color: $color-red;
+        }
+    }
+}
