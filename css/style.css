@@ -685,6 +685,12 @@ body {
   .btn--add-dark:hover, .btn--add-dark:focus {
     color: #000; }
 
+.information--intro-dark {
+  background-color: #111; }
+
+.section-methods--dark {
+  background-color: #111; }
+
 .navigation--dark .navigation__tool-tip {
   background-color: #000;
   color: #e94560; }
@@ -705,3 +711,17 @@ body {
 
 .navigation--dark .navigation__link:active, .navigation--dark .navigation__link:focus {
   color: #e94560; }
+
+.heading-method--dark {
+  color: #e94560; }
+
+.result-text--dark {
+  color: #eee;
+  background-color: #551a8b; }
+
+.paragraph--dark {
+  color: #ccc; }
+  .paragraph--dark .paragraph--information-dark {
+    color: #ccc; }
+  .paragraph--dark .paragraph--footer-dark {
+    color: #000; }
