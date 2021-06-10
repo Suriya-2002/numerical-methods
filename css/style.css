@@ -554,6 +554,28 @@ body {
   transform: translate(50%, -45%);
   z-index: 3; }
 
+.navigation__dark-mode {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  position: fixed;
+  top: 20rem;
+  right: 8rem;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transition: all 0.3s; }
+  @media only screen and (max-width: 75em) {
+    .navigation__dark-mode {
+      top: 8rem;
+      left: 8rem; } }
+
+.navigation__dark-mode-image {
+  width: 8rem;
+  height: 8rem;
+  pointer-events: none; }
+
 .navigation__background ~ .navigation__list .navigation__item {
   opacity: 0;
   pointer-events: none; }
@@ -574,7 +596,7 @@ body {
   transform: translateX(160rem); }
   @media only screen and (max-width: 75em) {
     .navigation__item {
-      margin: 6rem 0;
+      margin: 3rem 0;
       text-align: center;
       transform: translateX(100rem); } }
   @media only screen and (max-width: 28.125em) {

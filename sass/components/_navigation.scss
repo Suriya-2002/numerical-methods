@@ -103,6 +103,31 @@
         z-index: 3;
     }
 
+    &__dark-mode {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        position: fixed;
+        top: 20rem;
+        right: 8rem;
+        z-index: 4;
+        opacity: 0;
+        pointer-events: none;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        @include responsive(tab-l) {
+            top: 8rem;
+            left: 8rem;
+        }
+    }
+
+    &__dark-mode-image {
+        width: 8rem;
+        height: 8rem;
+        pointer-events: none;
+    }
+
     &__background ~ &__list &__item {
         opacity: 0;
         pointer-events: none;
@@ -125,7 +150,7 @@
         transform: translateX(160rem);
 
         @include responsive(tab-l) {
-            margin: 6rem 0;
+            margin: 3rem 0;
             text-align: center;
             transform: translateX(100rem);
         }

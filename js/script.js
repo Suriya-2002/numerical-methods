@@ -1,6 +1,7 @@
 const navigationToggler = document.querySelector('.navigation__lines');
 const navigationBackground = document.querySelector('.navigation__background');
 const navigationLink = document.querySelectorAll('.navigation__link');
+const navigationDarkModeImage = document.querySelector('.navigation__dark-mode-image');
 
 let methodLink = document.querySelectorAll('.method__link');
 methodLink = [...methodLink, ...navigationLink];
@@ -18,6 +19,11 @@ const navigationActive = () => {
     gsap.to('.navigation__line--3', {
         top: '4rem',
         rotate: '-135deg',
+        duration: 0.3,
+    });
+    gsap.to('.navigation__dark-mode', {
+        opacity: 1,
+        pointerEvents: 'all',
         duration: 0.3,
     });
 
@@ -73,6 +79,11 @@ const navigationInactive = () => {
         rotate: '0',
         duration: 0.3,
     });
+    gsap.to('.navigation__dark-mode', {
+        opacity: 0,
+        pointerEvents: 'none',
+        duration: 0.3,
+    });
 
     if (screen.width > 1200) {
         gsap.to('.navigation__item', {
@@ -113,7 +124,8 @@ document.body.addEventListener('click', event => {
         if (
             event.target.classList.contains('navigation--active') ||
             event.target.classList.contains('navigation__lines') ||
-            event.target.classList.contains('navigation__line')
+            event.target.classList.contains('navigation__line') ||
+            event.target.classList.contains('navigation__dark-mode')
         ) {
         } else {
             navigationBackground.classList.remove('navigation--active');
@@ -144,6 +156,76 @@ methodLink.forEach(link => {
         });
     });
 });
+
+const toggleItem = (originalClassName, toggleClassName) => {
+    document.querySelector(`.${originalClassName}`).classList.toggle(toggleClassName);
+};
+
+const toggleAllItems = (originalClassName, toggleClassName) => {
+    document.querySelectorAll(`.${originalClassName}`).forEach(element => {
+        element.classList.toggle(toggleClassName);
+    });
+};
+
+const darkMode = () => {
+    toggleItem('navigation', 'navigation--dark');
+    toggleItem('section-methods', 'section-methods--dark');
+    toggleItem('table', 'table--dark');
+    toggleItem('body', 'body--dark');
+    toggleItem('footer', 'footer--dark');
+
+    toggleAllItems('btn-primary', 'btn-primary--dark');
+    toggleAllItems('btn--add', 'btn--add-dark');
+    toggleAllItems('information--intro', 'information--intro-dark');
+    toggleAllItems('heading-primary', 'heading-primary--dark');
+    toggleAllItems('heading-method', 'heading-method--dark');
+    toggleAllItems('result-text', 'result-text--dark');
+    toggleAllItems('paragraph', 'paragraph--dark');
+    toggleAllItems('paragraph--information', 'paragraph--information-dark');
+    toggleAllItems('paragraph--footer', 'paragraph--footer-dark');
+    toggleAllItems('dropdown', 'dropdown--dark');
+    toggleAllItems('dropdown--form', 'dropdown--form-dark');
+    toggleAllItems('form', 'form--dark');
+};
+
+const toggleDarkMode = pressed => {
+    const selectedMode = localStorage.getItem('dark-mode');
+
+    if (selectedMode === null) {
+        localStorage.setItem('dark-mode', 'light');
+    } else if (selectedMode === 'dark' && pressed) {
+        navigationDarkModeImage.src = './assets/images/moon.jpg';
+        navigationDarkModeImage.setAttribute('alt', 'Moon');
+
+        localStorage.setItem('dark-mode', 'light');
+        darkMode();
+    } else if (selectedMode === 'light' && pressed) {
+        navigationDarkModeImage.src = './assets/images/sun.jpg';
+        navigationDarkModeImage.setAttribute('alt', 'Sun');
+
+        localStorage.setItem('dark-mode', 'dark');
+        darkMode();
+    }
+
+    if (!pressed) {
+        if (selectedMode === 'dark') {
+            navigationDarkModeImage.src = './assets/images/sun.jpg';
+            navigationDarkModeImage.setAttribute('alt', 'Sun');
+
+            localStorage.setItem('dark-mode', 'dark');
+            darkMode();
+        } else if (selectedMode === 'light') {
+            navigationDarkModeImage.src = './assets/images/moon.jpg';
+            navigationDarkModeImage.setAttribute('alt', 'Moon');
+
+            localStorage.setItem('dark-mode', 'light');
+        }
+    }
+};
+
+toggleDarkMode(false);
+
+document.querySelector('.navigation__dark-mode').addEventListener('click', toggleDarkMode.bind(null, true));
 
 const generateInitialGuess = (question, regex) => {
     let startPositive = 0,
