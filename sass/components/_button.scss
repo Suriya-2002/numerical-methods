@@ -26,12 +26,10 @@
         bottom: 0;
     }
 
-    &--method {
-        @include responsive(mob) {
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
+    @include responsive(mob) {
+        width: 100%;
+        display: block;
+        text-align: center;
     }
 }
 
