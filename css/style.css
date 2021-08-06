@@ -837,7 +837,9 @@ body {
 
 .paragraph--dark {
   color: #ccc; }
-  .paragraph--dark .paragraph--information-dark {
-    color: #ccc; }
-  .paragraph--dark .paragraph--footer-dark {
-    color: #000; }
+
+.paragraph--information-dark {
+  color: #ccc; }
+
+.paragraph--footer-dark {
+  color: #555; }
