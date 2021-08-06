@@ -19,19 +19,19 @@ html {
     }
 
     @include responsive(tab-p) {
-        font-size: 35%;
+        font-size: 37%;
     }
 
     @include responsive(mob) {
-        font-size: 30%;
+        font-size: 35%;
     }
 
     @include responsive(500) {
-        font-size: 25%;
+        font-size: 30%;
     }
 
     @include responsive(350) {
-        font-size: 20%;
+        font-size: 28%;
     }
 }
 

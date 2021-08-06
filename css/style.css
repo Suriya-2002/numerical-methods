@@ -16,16 +16,16 @@ html {
       font-size: 40%; } }
   @media only screen and (max-width: 56.25em) {
     html {
-      font-size: 35%; } }
+      font-size: 37%; } }
   @media only screen and (max-width: 37.5em) {
     html {
-      font-size: 30%; } }
+      font-size: 35%; } }
   @media only screen and (max-width: 31.25em) {
     html {
-      font-size: 25%; } }
+      font-size: 30%; } }
   @media only screen and (max-width: 21.875em) {
     html {
-      font-size: 20%; } }
+      font-size: 28%; } }
 
 body {
   box-sizing: border-box; }
@@ -111,6 +111,9 @@ body {
     @media only screen and (max-width: 75em) {
       .paragraph--footer {
         width: 95%; } }
+  .paragraph--small {
+    margin-top: 5rem;
+    font-size: 1.6rem; }
 
 .margin-top--medium {
   margin-top: 4rem !important; }
@@ -842,4 +845,4 @@ body {
   color: #ccc; }
 
 .paragraph--footer-dark {
-  color: #555; }
+  color: #333; }
